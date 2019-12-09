@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SQRichTextEditor_Example' do
+  pod 'SQRichTextEditor', :path => '../'
+
+  target 'SQRichTextEditor_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
