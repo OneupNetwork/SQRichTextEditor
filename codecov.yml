@@ -1,9 +1,0 @@
-codecov:
-  notify:
-    require_ci_to_pass: yes
-coverage:
-  ignore:
-  - Example/Pods/.*
-  - Example/Tests/*
-  - Example/Build/*
-  - Example/SQRichTextEditor/*
