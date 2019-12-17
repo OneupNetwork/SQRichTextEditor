@@ -1,0 +1,835 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BE07EE52490A5149EF91AAEEA9FFED5 /* Pods-SQRichTextEditor_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAAE26016B6D86AC5D1479297522A6C /* Pods-SQRichTextEditor_Example-dummy.m */; };
+		3E2A6FEFADEDA8ED1F96D41DAB21D4A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		418983B1BBC0CC742DFCAB98FA55F49D /* SQRichTextEditor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D78C1F470F52A9D9E25265215358634 /* SQRichTextEditor-dummy.m */; };
+		452B2BE494E85D329EA11D8FE05349DB /* Pods-SQRichTextEditor_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 350142560A1BDD49D24E20B9650EA8E3 /* Pods-SQRichTextEditor_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74C187487839D01298EF01ABB8111E08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		8801274123A73B03001E57E2 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801273F23A727D0001E57E2 /* Helper.swift */; };
+		88896FE123A22EFA00701CDD /* SQTextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88896FDF23A22D9300701CDD /* SQTextAttribute.swift */; };
+		889E5B0F239F538E003CAE8A /* SQTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889E5B0E239F538E003CAE8A /* SQTextEditorView.swift */; };
+		889E5B14239F5643003CAE8A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B11239F5643003CAE8A /* index.html */; };
+		889E5B15239F5643003CAE8A /* editor.css in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B12239F5643003CAE8A /* editor.css */; };
+		889E5B16239F5643003CAE8A /* squire-raw.js in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B13239F5643003CAE8A /* squire-raw.js */; };
+		889E5B18239F8A77003CAE8A /* editor.js in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B17239F8A77003CAE8A /* editor.js */; };
+		D75D3EA4D03B7A25E61C8B802025CD7F /* Pods-SQRichTextEditor_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 544DA90A0B8F791CB55D96F50AC8D154 /* Pods-SQRichTextEditor_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2B538ED8831BDCE58D9614792EA8CA9 /* Pods-SQRichTextEditor_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2434FFF8A8728F3A4587EFEA700B98A4 /* Pods-SQRichTextEditor_Tests-dummy.m */; };
+		F3C5916E0DA7A7815FC018790CAF120A /* SQRichTextEditor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EFC6BE93920CF1FF30523D612CD2139D /* SQRichTextEditor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FCE29324148D41A9ABD44674707B56DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A527939EAD4A32BAA4EB3566FC03814A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20F68A12AF9C900B479F89246CEE63CC;
+			remoteInfo = "Pods-SQRichTextEditor_Example";
+		};
+		C2F2AA35783D72CC6E862F6078E470C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83BCF0845B72256AEF5F16D841C35A06;
+			remoteInfo = SQRichTextEditor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0876B22F519CE21997FB6BAB4D3305BC /* Pods-SQRichTextEditor_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SQRichTextEditor_Example-Info.plist"; sourceTree = "<group>"; };
+		0FDD3607776BDC342C131F7CADFD4035 /* Pods-SQRichTextEditor_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SQRichTextEditor_Tests.modulemap"; sourceTree = "<group>"; };
+		103E8E8C17E5999F4F50D66AD3727EC3 /* Pods-SQRichTextEditor_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SQRichTextEditor_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1C37D3C49315E6E341C4BD8AE8AB02CA /* Pods-SQRichTextEditor_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SQRichTextEditor_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		20D9A18C8B2745461EEB803EC0F2FC3A /* Pods_SQRichTextEditor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SQRichTextEditor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2434FFF8A8728F3A4587EFEA700B98A4 /* Pods-SQRichTextEditor_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SQRichTextEditor_Tests-dummy.m"; sourceTree = "<group>"; };
+		2EAAE26016B6D86AC5D1479297522A6C /* Pods-SQRichTextEditor_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SQRichTextEditor_Example-dummy.m"; sourceTree = "<group>"; };
+		2FDD08F276EBFBC2C4A4BE63E90A3539 /* Pods-SQRichTextEditor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SQRichTextEditor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		350142560A1BDD49D24E20B9650EA8E3 /* Pods-SQRichTextEditor_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SQRichTextEditor_Example-umbrella.h"; sourceTree = "<group>"; };
+		4CDF7D5351FDA1C4513C38061AC9237B /* Pods-SQRichTextEditor_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SQRichTextEditor_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4F537B2C55181823FD7A9434787FC916 /* SQRichTextEditor.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SQRichTextEditor.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		544DA90A0B8F791CB55D96F50AC8D154 /* Pods-SQRichTextEditor_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SQRichTextEditor_Tests-umbrella.h"; sourceTree = "<group>"; };
+		5C166367E5B936A7932C710B5D94EE0D /* SQRichTextEditor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SQRichTextEditor.xcconfig; sourceTree = "<group>"; };
+		668A09B57197E67FE7FD20CDF3BC230E /* Pods-SQRichTextEditor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SQRichTextEditor_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		6EE42B64888D14C6FC79E422BABBF0D4 /* Pods-SQRichTextEditor_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SQRichTextEditor_Example.modulemap"; sourceTree = "<group>"; };
+		74CED8DBCBF441AAA8A7AE899717ADB0 /* SQRichTextEditor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SQRichTextEditor-Info.plist"; sourceTree = "<group>"; };
+		79630FDC464E3DE419672E6FB41DC577 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		801DE4B0B046AB7769C8440E5AFBD83B /* Pods-SQRichTextEditor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SQRichTextEditor_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8196B8E631BE976AFA6B8167EACCE097 /* Pods-SQRichTextEditor_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SQRichTextEditor_Example-frameworks.sh"; sourceTree = "<group>"; };
+		86C85BEBFFC2107E0AC46A0CDB5B28A4 /* Pods-SQRichTextEditor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SQRichTextEditor_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8801273F23A727D0001E57E2 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		88896FDF23A22D9300701CDD /* SQTextAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQTextAttribute.swift; sourceTree = "<group>"; };
+		889E5B0E239F538E003CAE8A /* SQTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQTextEditorView.swift; sourceTree = "<group>"; };
+		889E5B11239F5643003CAE8A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		889E5B12239F5643003CAE8A /* editor.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = editor.css; sourceTree = "<group>"; };
+		889E5B13239F5643003CAE8A /* squire-raw.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "squire-raw.js"; sourceTree = "<group>"; };
+		889E5B17239F8A77003CAE8A /* editor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = editor.js; sourceTree = "<group>"; };
+		8D78C1F470F52A9D9E25265215358634 /* SQRichTextEditor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SQRichTextEditor-dummy.m"; sourceTree = "<group>"; };
+		99BA22336E5AD437191C0A5EA5700185 /* SQRichTextEditor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SQRichTextEditor.modulemap; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FDA97369C0142E15AD7500AE38D65CB /* SQRichTextEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SQRichTextEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7ED5D97B1367357829D6D550882433E /* Pods-SQRichTextEditor_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SQRichTextEditor_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A821DB0DBE37A3A024D72896829D7D0B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B0B50AB688BE21BBB27D8C752BA1B5C4 /* Pods-SQRichTextEditor_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SQRichTextEditor_Tests-Info.plist"; sourceTree = "<group>"; };
+		CE9501A4A538E04173DD695DA188D784 /* SQRichTextEditor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQRichTextEditor-prefix.pch"; sourceTree = "<group>"; };
+		ECCE30481EBF6619CDA501AFAB47175E /* Pods_SQRichTextEditor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SQRichTextEditor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFC6BE93920CF1FF30523D612CD2139D /* SQRichTextEditor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQRichTextEditor-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C603333F14407D0A80E2D20FB44A369 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74C187487839D01298EF01ABB8111E08 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		637B8831083E72D5AB418E15B228F120 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E2A6FEFADEDA8ED1F96D41DAB21D4A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C3771DAC930DE634270F0C7B25FCABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCE29324148D41A9ABD44674707B56DF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05DE00DC122AE4BCB0E6E1A9F4B220D5 /* Pods-SQRichTextEditor_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0FDD3607776BDC342C131F7CADFD4035 /* Pods-SQRichTextEditor_Tests.modulemap */,
+				A7ED5D97B1367357829D6D550882433E /* Pods-SQRichTextEditor_Tests-acknowledgements.markdown */,
+				103E8E8C17E5999F4F50D66AD3727EC3 /* Pods-SQRichTextEditor_Tests-acknowledgements.plist */,
+				2434FFF8A8728F3A4587EFEA700B98A4 /* Pods-SQRichTextEditor_Tests-dummy.m */,
+				B0B50AB688BE21BBB27D8C752BA1B5C4 /* Pods-SQRichTextEditor_Tests-Info.plist */,
+				544DA90A0B8F791CB55D96F50AC8D154 /* Pods-SQRichTextEditor_Tests-umbrella.h */,
+				2FDD08F276EBFBC2C4A4BE63E90A3539 /* Pods-SQRichTextEditor_Tests.debug.xcconfig */,
+				86C85BEBFFC2107E0AC46A0CDB5B28A4 /* Pods-SQRichTextEditor_Tests.release.xcconfig */,
+			);
+			name = "Pods-SQRichTextEditor_Tests";
+			path = "Target Support Files/Pods-SQRichTextEditor_Tests";
+			sourceTree = "<group>";
+		};
+		3041BF03626E4B1390A11BDDB7EEC93E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D206D6F5B943922035BB8C107420578 /* SQRichTextEditor */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		3C953246D91846303DC48699AD046AC7 /* Pods-SQRichTextEditor_Example */ = {
+			isa = PBXGroup;
+			children = (
+				6EE42B64888D14C6FC79E422BABBF0D4 /* Pods-SQRichTextEditor_Example.modulemap */,
+				4CDF7D5351FDA1C4513C38061AC9237B /* Pods-SQRichTextEditor_Example-acknowledgements.markdown */,
+				1C37D3C49315E6E341C4BD8AE8AB02CA /* Pods-SQRichTextEditor_Example-acknowledgements.plist */,
+				2EAAE26016B6D86AC5D1479297522A6C /* Pods-SQRichTextEditor_Example-dummy.m */,
+				8196B8E631BE976AFA6B8167EACCE097 /* Pods-SQRichTextEditor_Example-frameworks.sh */,
+				0876B22F519CE21997FB6BAB4D3305BC /* Pods-SQRichTextEditor_Example-Info.plist */,
+				350142560A1BDD49D24E20B9650EA8E3 /* Pods-SQRichTextEditor_Example-umbrella.h */,
+				668A09B57197E67FE7FD20CDF3BC230E /* Pods-SQRichTextEditor_Example.debug.xcconfig */,
+				801DE4B0B046AB7769C8440E5AFBD83B /* Pods-SQRichTextEditor_Example.release.xcconfig */,
+			);
+			name = "Pods-SQRichTextEditor_Example";
+			path = "Target Support Files/Pods-SQRichTextEditor_Example";
+			sourceTree = "<group>";
+		};
+		5EA2B4C668E4BB649EC45E09A8D0B3D6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				99BA22336E5AD437191C0A5EA5700185 /* SQRichTextEditor.modulemap */,
+				5C166367E5B936A7932C710B5D94EE0D /* SQRichTextEditor.xcconfig */,
+				8D78C1F470F52A9D9E25265215358634 /* SQRichTextEditor-dummy.m */,
+				74CED8DBCBF441AAA8A7AE899717ADB0 /* SQRichTextEditor-Info.plist */,
+				CE9501A4A538E04173DD695DA188D784 /* SQRichTextEditor-prefix.pch */,
+				EFC6BE93920CF1FF30523D612CD2139D /* SQRichTextEditor-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SQRichTextEditor";
+			sourceTree = "<group>";
+		};
+		889E5B08239F534B003CAE8A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				889E5B0E239F538E003CAE8A /* SQTextEditorView.swift */,
+				88896FDF23A22D9300701CDD /* SQTextAttribute.swift */,
+				8801273F23A727D0001E57E2 /* Helper.swift */,
+			);
+			name = Classes;
+			path = SQRichTextEditor/Classes;
+			sourceTree = "<group>";
+		};
+		889E5B0B239F5357003CAE8A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				889E5B10239F55E9003CAE8A /* Editor */,
+			);
+			name = Assets;
+			path = SQRichTextEditor/Assets;
+			sourceTree = "<group>";
+		};
+		889E5B10239F55E9003CAE8A /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				889E5B12239F5643003CAE8A /* editor.css */,
+				889E5B11239F5643003CAE8A /* index.html */,
+				889E5B13239F5643003CAE8A /* squire-raw.js */,
+				889E5B17239F8A77003CAE8A /* editor.js */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		8D206D6F5B943922035BB8C107420578 /* SQRichTextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				889E5B08239F534B003CAE8A /* Classes */,
+				889E5B0B239F5357003CAE8A /* Assets */,
+				FAAD36EA2A9B88942987C8689C4B3A1E /* Pod */,
+				5EA2B4C668E4BB649EC45E09A8D0B3D6 /* Support Files */,
+			);
+			name = SQRichTextEditor;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		A31DF541ABB9D38BC0FB645D901FF8B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECCE30481EBF6619CDA501AFAB47175E /* Pods_SQRichTextEditor_Example.framework */,
+				20D9A18C8B2745461EEB803EC0F2FC3A /* Pods_SQRichTextEditor_Tests.framework */,
+				9FDA97369C0142E15AD7500AE38D65CB /* SQRichTextEditor.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD59A773919E3645118574027AC20AC0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C953246D91846303DC48699AD046AC7 /* Pods-SQRichTextEditor_Example */,
+				05DE00DC122AE4BCB0E6E1A9F4B220D5 /* Pods-SQRichTextEditor_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				3041BF03626E4B1390A11BDDB7EEC93E /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				A31DF541ABB9D38BC0FB645D901FF8B2 /* Products */,
+				BD59A773919E3645118574027AC20AC0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAAD36EA2A9B88942987C8689C4B3A1E /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A821DB0DBE37A3A024D72896829D7D0B /* LICENSE */,
+				79630FDC464E3DE419672E6FB41DC577 /* README.md */,
+				4F537B2C55181823FD7A9434787FC916 /* SQRichTextEditor.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8CFF5747294891EB3DEF820A11600F74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3C5916E0DA7A7815FC018790CAF120A /* SQRichTextEditor-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFAC23242934B283CCCAEB4DAFC82A5D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D75D3EA4D03B7A25E61C8B802025CD7F /* Pods-SQRichTextEditor_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0CC09948BA866E787FE9D3BD8BD8BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				452B2BE494E85D329EA11D8FE05349DB /* Pods-SQRichTextEditor_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		20F68A12AF9C900B479F89246CEE63CC /* Pods-SQRichTextEditor_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 322D56654B3EA5E783BDB5F4C25E0E7C /* Build configuration list for PBXNativeTarget "Pods-SQRichTextEditor_Example" */;
+			buildPhases = (
+				CA0CC09948BA866E787FE9D3BD8BD8BE /* Headers */,
+				8763B2A4639F2931D000C7F6A4FB72EA /* Sources */,
+				637B8831083E72D5AB418E15B228F120 /* Frameworks */,
+				B18A1161B1AE95A52B4593F7DBDBFE4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E68FF1558BE7D3FCE94349E71D9365A /* PBXTargetDependency */,
+			);
+			name = "Pods-SQRichTextEditor_Example";
+			productName = "Pods-SQRichTextEditor_Example";
+			productReference = ECCE30481EBF6619CDA501AFAB47175E /* Pods_SQRichTextEditor_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7135229763345D3A4EC74ED0D316ABDE /* Pods-SQRichTextEditor_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D103509A359A4C3B47BD35C181A6F07B /* Build configuration list for PBXNativeTarget "Pods-SQRichTextEditor_Tests" */;
+			buildPhases = (
+				AFAC23242934B283CCCAEB4DAFC82A5D /* Headers */,
+				416FA37E218838BC474512D88FDF6D7F /* Sources */,
+				4C603333F14407D0A80E2D20FB44A369 /* Frameworks */,
+				3A859D1E3F27F3A4A020AC94CBC43EA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FB8A3D3BE342FEEBDE9DBB2EF5FA8C3 /* PBXTargetDependency */,
+			);
+			name = "Pods-SQRichTextEditor_Tests";
+			productName = "Pods-SQRichTextEditor_Tests";
+			productReference = 20D9A18C8B2745461EEB803EC0F2FC3A /* Pods_SQRichTextEditor_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		83BCF0845B72256AEF5F16D841C35A06 /* SQRichTextEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 503C6E5C5954ACF36D4DE6448594613B /* Build configuration list for PBXNativeTarget "SQRichTextEditor" */;
+			buildPhases = (
+				8CFF5747294891EB3DEF820A11600F74 /* Headers */,
+				C2F79884092F44611600A7EF44B5704A /* Sources */,
+				6C3771DAC930DE634270F0C7B25FCABA /* Frameworks */,
+				9D1CFFF892BE52646C96C2E75D2C947B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SQRichTextEditor;
+			productName = SQRichTextEditor;
+			productReference = 9FDA97369C0142E15AD7500AE38D65CB /* SQRichTextEditor.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					20F68A12AF9C900B479F89246CEE63CC = {
+						LastSwiftMigration = 1130;
+					};
+					83BCF0845B72256AEF5F16D841C35A06 = {
+						LastSwiftMigration = 1110;
+					};
+				};
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = A31DF541ABB9D38BC0FB645D901FF8B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20F68A12AF9C900B479F89246CEE63CC /* Pods-SQRichTextEditor_Example */,
+				7135229763345D3A4EC74ED0D316ABDE /* Pods-SQRichTextEditor_Tests */,
+				83BCF0845B72256AEF5F16D841C35A06 /* SQRichTextEditor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A859D1E3F27F3A4A020AC94CBC43EA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D1CFFF892BE52646C96C2E75D2C947B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889E5B15239F5643003CAE8A /* editor.css in Resources */,
+				889E5B16239F5643003CAE8A /* squire-raw.js in Resources */,
+				889E5B14239F5643003CAE8A /* index.html in Resources */,
+				889E5B18239F8A77003CAE8A /* editor.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B18A1161B1AE95A52B4593F7DBDBFE4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		416FA37E218838BC474512D88FDF6D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2B538ED8831BDCE58D9614792EA8CA9 /* Pods-SQRichTextEditor_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8763B2A4639F2931D000C7F6A4FB72EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BE07EE52490A5149EF91AAEEA9FFED5 /* Pods-SQRichTextEditor_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2F79884092F44611600A7EF44B5704A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889E5B0F239F538E003CAE8A /* SQTextEditorView.swift in Sources */,
+				418983B1BBC0CC742DFCAB98FA55F49D /* SQRichTextEditor-dummy.m in Sources */,
+				88896FE123A22EFA00701CDD /* SQTextAttribute.swift in Sources */,
+				8801274123A73B03001E57E2 /* Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5FB8A3D3BE342FEEBDE9DBB2EF5FA8C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SQRichTextEditor_Example";
+			target = 20F68A12AF9C900B479F89246CEE63CC /* Pods-SQRichTextEditor_Example */;
+			targetProxy = A527939EAD4A32BAA4EB3566FC03814A /* PBXContainerItemProxy */;
+		};
+		6E68FF1558BE7D3FCE94349E71D9365A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SQRichTextEditor;
+			target = 83BCF0845B72256AEF5F16D841C35A06 /* SQRichTextEditor */;
+			targetProxy = C2F2AA35783D72CC6E862F6078E470C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2D7F53AF32E1A5EBFA38201D3662E215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86C85BEBFFC2107E0AC46A0CDB5B28A4 /* Pods-SQRichTextEditor_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SQRichTextEditor_Tests/Pods-SQRichTextEditor_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SQRichTextEditor_Tests/Pods-SQRichTextEditor_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		903C8BF10A960F2C72938F47C27E7C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C166367E5B936A7932C710B5D94EE0D /* SQRichTextEditor.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SQRichTextEditor/SQRichTextEditor-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SQRichTextEditor/SQRichTextEditor-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SQRichTextEditor/SQRichTextEditor.modulemap";
+				PRODUCT_MODULE_NAME = SQRichTextEditor;
+				PRODUCT_NAME = SQRichTextEditor;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		94079E1270A5E326127EDC24BC73B2FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801DE4B0B046AB7769C8440E5AFBD83B /* Pods-SQRichTextEditor_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SQRichTextEditor_Example/Pods-SQRichTextEditor_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SQRichTextEditor_Example/Pods-SQRichTextEditor_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		982F6731970A06C8C2C823071E70F4FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C166367E5B936A7932C710B5D94EE0D /* SQRichTextEditor.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SQRichTextEditor/SQRichTextEditor-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SQRichTextEditor/SQRichTextEditor-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SQRichTextEditor/SQRichTextEditor.modulemap";
+				PRODUCT_MODULE_NAME = SQRichTextEditor;
+				PRODUCT_NAME = SQRichTextEditor;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B0087CB4594321EF41619F3181FE120E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B8BCBD0110C2658BB5DAADB9B7D97B92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		E0BB681000DB0136E75BC0A02CA0897C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FDD08F276EBFBC2C4A4BE63E90A3539 /* Pods-SQRichTextEditor_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SQRichTextEditor_Tests/Pods-SQRichTextEditor_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SQRichTextEditor_Tests/Pods-SQRichTextEditor_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EFFF1B91F69D9253293472C77A920AF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 668A09B57197E67FE7FD20CDF3BC230E /* Pods-SQRichTextEditor_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SQRichTextEditor_Example/Pods-SQRichTextEditor_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SQRichTextEditor_Example/Pods-SQRichTextEditor_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		322D56654B3EA5E783BDB5F4C25E0E7C /* Build configuration list for PBXNativeTarget "Pods-SQRichTextEditor_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFF1B91F69D9253293472C77A920AF0 /* Debug */,
+				94079E1270A5E326127EDC24BC73B2FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8BCBD0110C2658BB5DAADB9B7D97B92 /* Debug */,
+				B0087CB4594321EF41619F3181FE120E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		503C6E5C5954ACF36D4DE6448594613B /* Build configuration list for PBXNativeTarget "SQRichTextEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				903C8BF10A960F2C72938F47C27E7C39 /* Debug */,
+				982F6731970A06C8C2C823071E70F4FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D103509A359A4C3B47BD35C181A6F07B /* Build configuration list for PBXNativeTarget "Pods-SQRichTextEditor_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0BB681000DB0136E75BC0A02CA0897C /* Debug */,
+				2D7F53AF32E1A5EBFA38201D3662E215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

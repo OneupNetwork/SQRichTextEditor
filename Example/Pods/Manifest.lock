@@ -1,0 +1,16 @@
+PODS:
+  - SQRichTextEditor (0.1.0)
+
+DEPENDENCIES:
+  - SQRichTextEditor (from `../`)
+
+EXTERNAL SOURCES:
+  SQRichTextEditor:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SQRichTextEditor: e53d7d05238205a721a9fa7d2a77971e7f732a12
+
+PODFILE CHECKSUM: fd757c1dd76514f6263576df43948d63a15e3896
+
+COCOAPODS: 1.8.4
