@@ -1,4 +1,4 @@
-# SQRichTextEditor
+![SQRichTextEditor](logo.png)
 
 [![CI Status](https://img.shields.io/travis/conscientiousness/SQRichTextEditor.svg?style=flat)](https://travis-ci.org/conscientiousness/SQRichTextEditor)
 [![Version](https://img.shields.io/cocoapods/v/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
