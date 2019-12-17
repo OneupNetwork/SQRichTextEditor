@@ -1,6 +1,7 @@
 ![SQRichTextEditor](logo.png)
 
-[![CI Status](https://img.shields.io/travis/conscientiousness/SQRichTextEditor.svg?style=flat)](https://travis-ci.org/conscientiousness/SQRichTextEditor)
+[![Build Status](https://travis-ci.org/OneupNetwork/SQRichTextEditor.svg?branch=master)](https://travis-ci.org/OneupNetwork/SQRichTextEditor)
+[![codecov](https://codecov.io/gh/OneupNetwork/SQRichTextEditor/branch/master/graph/badge.svg)](https://codecov.io/gh/OneupNetwork/SQRichTextEditor)
 [![Version](https://img.shields.io/cocoapods/v/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
 [![License](https://img.shields.io/cocoapods/l/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
 [![Platform](https://img.shields.io/cocoapods/p/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
