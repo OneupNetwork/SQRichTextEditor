@@ -1,11 +1,4 @@
-language: objective-c
+language: swift
 osx_image: xcode11.2
-env:
-  matrix:
-    - TEST_SDK=iphonesimulator OS=10.3 NAME='iPhone 6s'
-    - TEST_SDK=iphonesimulator OS=11.0 NAME='iPhone 7'
-    - TEST_SDK=iphonesimulator OS=12.0 NAME='iPhone 8'
-    - TEST_SDK=iphonesimulator OS=13.2 NAME='iPhone XS'
-script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/SQRichTextEditor.xcworkspace -scheme SQRichTextEditor-Example -sdk $TEST_SDK -destination "platform=iOS Simulator,OS=$OS,name=$NAME" ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+script: 
+  xcodebuild clean build test -enableCodeCoverage YES -workspace Example/SQRichTextEditor.xcworkspace -scheme SQRichTextEditor-Example -sdk iphonesimulator -destination "platform=iOS Simulator,OS=13.2.2,name=iPhone 11 Pro Max" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
