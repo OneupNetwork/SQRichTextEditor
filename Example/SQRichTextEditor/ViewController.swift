@@ -104,9 +104,7 @@ class ViewController: UIViewController {
           textField = pTextField
         }
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (pAction) in
-          alertController.dismiss(animated: true, completion: nil)
-        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (pAction) in
             if let inputValue = textField?.text {
@@ -124,6 +122,14 @@ class ViewController: UIViewController {
                 }
             }
         }))
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showAlert(text: String?) {
+        let alertController = UIAlertController(title: "", message: text, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 
         self.present(alertController, animated: true, completion: nil)
     }
@@ -160,6 +166,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                 showColorPicker()
             case .insertHTML, .makeLink, .insertImage, .setFontSize:
                 showInputAlert(type: option)
+            case .getHTML:
+                editorView.getHTML { html in
+                    self.showAlert(text: html)
+                }
             }
         }
     }

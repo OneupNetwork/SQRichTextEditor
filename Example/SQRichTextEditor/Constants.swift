@@ -33,6 +33,7 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
     case setFontColor
     case setFontSize
     case insertHTML
+    case getHTML
     
     var description: String {
         switch self {
@@ -57,7 +58,9 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
         case .setFontSize:
             return "Font Size(default)"
         case .insertHTML:
-        return "Insert HTML"
+            return "Insert HTML"
+        case .getHTML:
+            return "Get HTML"
         }
     }
 }

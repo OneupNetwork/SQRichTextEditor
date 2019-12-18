@@ -19,7 +19,6 @@
 		8878C47D23A88C7700FA611C /* EFHSBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8878C47123A88C7700FA611C /* EFHSBView.swift */; };
 		8878C47E23A88C7700FA611C /* EFColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8878C47223A88C7700FA611C /* EFColorUtils.swift */; };
 		8878C47F23A88C7700FA611C /* EFColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8878C47323A88C7700FA611C /* EFColorSelectionView.swift */; };
-		8878C48023A88C7700FA611C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 8878C47423A88C7700FA611C /* .gitkeep */; };
 		8878C48123A88C7700FA611C /* EFColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8878C47523A88C7700FA611C /* EFColorWheelView.swift */; };
 		8878C48223A88C7700FA611C /* EFRGBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8878C47623A88C7700FA611C /* EFRGBView.swift */; };
 		8878C48323A88C7700FA611C /* EFControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8878C47723A88C7700FA611C /* EFControl.swift */; };
@@ -61,7 +60,6 @@
 		8878C47123A88C7700FA611C /* EFHSBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFHSBView.swift; sourceTree = "<group>"; };
 		8878C47223A88C7700FA611C /* EFColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorUtils.swift; sourceTree = "<group>"; };
 		8878C47323A88C7700FA611C /* EFColorSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorSelectionView.swift; sourceTree = "<group>"; };
-		8878C47423A88C7700FA611C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		8878C47523A88C7700FA611C /* EFColorWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorWheelView.swift; sourceTree = "<group>"; };
 		8878C47623A88C7700FA611C /* EFRGBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFRGBView.swift; sourceTree = "<group>"; };
 		8878C47723A88C7700FA611C /* EFControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFControl.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				8878C47123A88C7700FA611C /* EFHSBView.swift */,
 				8878C47223A88C7700FA611C /* EFColorUtils.swift */,
 				8878C47323A88C7700FA611C /* EFColorSelectionView.swift */,
-				8878C47423A88C7700FA611C /* .gitkeep */,
 				8878C47523A88C7700FA611C /* EFColorWheelView.swift */,
 				8878C47623A88C7700FA611C /* EFRGBView.swift */,
 				8878C47723A88C7700FA611C /* EFControl.swift */,
@@ -300,7 +297,6 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				8878C48023A88C7700FA611C /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
