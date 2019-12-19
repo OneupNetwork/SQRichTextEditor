@@ -8,13 +8,13 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SQRichTextEditor'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'A rich text WYSIWYG editor for iOS base on Squire.'
   s.description      = "A rich text WYSIWYG editor for iOS, which is based on Squire using HTML5 and javascript."
   s.homepage         = 'https://github.com/OneupNetwork/SQRichTextEditor'
   
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Yuwei Lin' => 'n823n823@gmail.com' }
+  s.author           = { 'Yuwei Lin' => 'jesse@gamer.com.tw' }
   s.source           = { :git => 'https://github.com/OneupNetwork/SQRichTextEditor.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
