@@ -57,14 +57,14 @@ public struct SQTextAttributeTextInfo: Codable {
         self.textBackgroundColor = textBackgroundHexColor
         self.size = size
     }
-
+    
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         textColor = try? container.decode(String.self, forKey: .textColor)
-
+        
         textBackgroundColor = try? container.decode(String.self, forKey: .textBackgroundColor)
-
+        
         if let value = try? container.decode(String.self, forKey: .size) {
             size = Int(value)
         }

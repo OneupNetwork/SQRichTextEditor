@@ -30,8 +30,9 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
     case makeLink
     case removeLink
     case insertImage
-    case setFontColor
-    case setFontSize
+    case setTextColor
+    case setTextBackgroundColor
+    case setTextSize
     case insertHTML
     case getHTML
     
@@ -53,10 +54,12 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
             return "Remove Link"
         case .insertImage:
             return "Insert Image"
-        case .setFontColor:
-            return "Font Color"
-        case .setFontSize:
-            return "Font Size(default)"
+        case .setTextColor:
+            return "Text Color"
+        case .setTextBackgroundColor:
+            return "Text Background Color"
+        case .setTextSize:
+            return "Text Size(default)"
         case .insertHTML:
             return "Insert HTML"
         case .getHTML:

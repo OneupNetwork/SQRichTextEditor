@@ -337,7 +337,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
         waitForExpectations(timeout: timeout, handler: nil)
     }
     
-    func testSetTextBrownColor() {
+    func testSetTextColor() {
         let exp = expectation(description: "\(#function)\(#line)")
         
         let tagId = "test"
@@ -357,6 +357,34 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 
                 self.editor.setText(color: color, completion: { error in
                     XCTAssert(self.editor.selectedTextAttribute.textInfo.color == color)
+                    exp.fulfill()
+                })
+            })
+        }
+        
+        waitForExpectations(timeout: timeout, handler: nil)
+    }
+    
+    func testSetTextBackgroundColor() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        let tagId = "test"
+        let testHtml = makeTestHTML(id: tagId, value: "test")
+        
+        editor.insertHTML(testHtml) { error in
+            XCTAssertNil(error)
+            
+            self.editor.setTextSelection(startElementId: tagId,
+                                         startIndex: 0,
+                                         endElementId: tagId,
+                                         endIndex: 2,
+                                         completion: { error in
+                XCTAssertNil(error)
+                
+                let color = UIColor.brown
+                
+                self.editor.setText(backgroundColor: color, completion: { error in
+                    XCTAssert(self.editor.selectedTextAttribute.textInfo.backgroundColor == color)
                     exp.fulfill()
                 })
             })

@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         return _editorView
     }()
     
-    private var selectedColor: UIColor = .black
+    private var selectedOption: ToolOptionType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         collectionView.layoutIfNeeded()
     }
-
+    
     private func setupUI() {
         view.addSubview(collectionView)
         view.addSubview(editorView)
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         editorView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         editorView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     }
-
+    
     private func setupCollectioView() {
         collectionView.backgroundColor = .clear
         collectionView.register(ToolItemCell.self, forCellWithReuseIdentifier: ToolItemCellSettings.id)
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     private lazy var colorPickerNavController: UINavigationController = {
         let colorSelectionController = EFColorSelectionViewController()
         colorSelectionController.delegate = self
-        colorSelectionController.color = selectedColor
+        colorSelectionController.color = .black
         colorSelectionController.setMode(mode: .all)
         
         let nav = UINavigationController(rootViewController: colorSelectionController)
@@ -96,33 +96,33 @@ class ViewController: UIViewController {
     
     private func showInputAlert(type: ToolOptionType) {
         var textField: UITextField?
-
+        
         let alertController = UIAlertController(title: type.description, message: nil, preferredStyle: .alert)
-          alertController.addTextField { pTextField in
-          pTextField.clearButtonMode = .whileEditing
-          pTextField.borderStyle = .none
-          textField = pTextField
+        alertController.addTextField { pTextField in
+            pTextField.clearButtonMode = .whileEditing
+            pTextField.borderStyle = .none
+            textField = pTextField
         }
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
+        
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (pAction) in
             if let inputValue = textField?.text {
                 switch type {
-                    case .makeLink:
-                        self.editorView.makeLink(url: inputValue)
-                    case .insertImage:
-                        self.editorView.insertImage(url: inputValue)
-                    case .setFontSize:
-                        self.editorView.setText(size: Int(inputValue) ?? 20)
-                    case .insertHTML:
-                        self.editorView.insertHTML(inputValue)
+                case .makeLink:
+                    self.editorView.makeLink(url: inputValue)
+                case .insertImage:
+                    self.editorView.insertImage(url: inputValue)
+                case .setTextSize:
+                    self.editorView.setText(size: Int(inputValue) ?? 20)
+                case .insertHTML:
+                    self.editorView.insertHTML(inputValue)
                 default:
                     break
                 }
             }
         }))
-
+        
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: "", message: text, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-
+        
         self.present(alertController, animated: true, completion: nil)
     }
 }
@@ -148,7 +148,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let option = ToolOptionType(rawValue: indexPath.row) {
+        selectedOption = ToolOptionType(rawValue: indexPath.row)
+        
+        if let option = selectedOption {
             switch option {
             case .bold:
                 editorView.bold()
@@ -162,9 +164,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                 editorView.clear()
             case .removeLink:
                 editorView.removeLink()
-            case .setFontColor:
+            case .setTextColor, .setTextBackgroundColor:
                 showColorPicker()
-            case .insertHTML, .makeLink, .insertImage, .setFontSize:
+            case .insertHTML, .makeLink, .insertImage, .setTextSize:
                 showInputAlert(type: option)
             case .getHTML:
                 editorView.getHTML { html in
@@ -204,7 +206,15 @@ extension ViewController: SQTextEditorDelegate {
 extension ViewController: EFColorSelectionViewControllerDelegate {
     
     func colorViewController(_ colorViewCntroller: EFColorSelectionViewController, didChangeColor color: UIColor) {
-        selectedColor = color
-        editorView.setText(color: color)
+        if let option = selectedOption {
+            switch option {
+            case .setTextColor:
+                editorView.setText(color: color)
+            case .setTextBackgroundColor:
+                editorView.setText(backgroundColor: color)
+            default:
+                break
+            }
+        }
     }
 }

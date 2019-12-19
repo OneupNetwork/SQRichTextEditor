@@ -40,6 +40,7 @@ public class SQTextEditorView: UIView {
         case setFormat(type: RichTextFormatType)
         case removeFormat(type: RichTextFormatType)
         case setTextColor(hex: String)
+        case setTextBackgroundColor(hex: String)
         case setTextSize(size: Int)
         case insertImage(url: String)
         case makeLink(url: String)
@@ -67,7 +68,10 @@ public class SQTextEditorView: UIView {
                 return "removeFormat('\(type.keyName)')"
                 
             case .setTextColor(let hex):
-                return "setFontColor('\(hex)')"
+                return "setTextColor('\(hex)')"
+                
+            case .setTextBackgroundColor(let hex):
+                return "setTextBackgroundColor('\(hex)')"
                 
             case .setTextSize(let size):
                 return "setFontSize('\(size)')"
@@ -247,10 +251,10 @@ public class SQTextEditorView: UIView {
      ```
      */
     public func setTextSelection(startElementId: String,
-                             startIndex: Int,
-                             endElementId: String,
-                             endIndex: Int,
-                             completion: ((_ error: Error?) -> ())? = nil) {
+                                 startIndex: Int,
+                                 endElementId: String,
+                                 endIndex: Int,
+                                 completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.setSelection(startElementId: startElementId,
                                                                startIndex: startIndex,
                                                                endElementId: endElementId,
@@ -314,73 +318,87 @@ public class SQTextEditorView: UIView {
     }
     
     /**
-    Sets the colour of the selected text.
-    
-    - Parameter color: The colour to set.
-    */
+     Sets the colour of the selected text.
+     
+     - Parameter color: The colour to set.
+     */
     public func setText(color: UIColor, completion: ((_ error: Error?) -> ())? = nil) {
         let hex = Helper.rgbColorToHex(color: color)
         
         webView.evaluateJavaScript(JSFunctionType.setTextColor(hex: hex).name,
-        completionHandler: { (_, error) in
-         completion?(error)
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
+        })
+    }
+    
+    /**
+     Sets the colour of the background of the selected text.
+     
+     - Parameter color: The colour to set.
+     */
+    public func setText(backgroundColor: UIColor, completion: ((_ error: Error?) -> ())? = nil) {
+        let hex = Helper.rgbColorToHex(color: backgroundColor)
+        
+        webView.evaluateJavaScript(JSFunctionType.setTextBackgroundColor(hex: hex).name,
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
         })
     }
     
     /**
      Sets the font size for the selected text.
-    
-    - Parameter size: A size to set. The absolute length units will be 'px'
-    */
+     
+     - Parameter size: A size to set. The absolute length units will be 'px'
+     */
     public func setText(size: Int, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.setTextSize(size: size).name,
-        completionHandler: { (_, error) in
-         completion?(error)
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
         })
     }
     
     /**
-    Inserts an image at the current cursor location.
-    
-    - Parameter url: The source path for the image.
-    */
+     Inserts an image at the current cursor location.
+     
+     - Parameter url: The source path for the image.
+     */
     public func insertImage(url: String, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.insertImage(url: url).name,
-        completionHandler: { (_, error) in
-         completion?(error)
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
         })
     }
     
     /**
-    Makes the currently selected text a link. If no text is selected, the URL or email will be inserted as text at the current cursor point and made into a link.
-    
-    - Parameter url: The url or email to link to.
-    */
+     Makes the currently selected text a link. If no text is selected, the URL or email will be inserted as text at the current cursor point and made into a link.
+     
+     - Parameter url: The url or email to link to.
+     */
     public func makeLink(url: String, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.makeLink(url: url).name,
-        completionHandler: { (_, error) in
-         completion?(error)
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
         })
     }
     
     /**
-    Removes any link that is currently at least partially selected.
-    */
+     Removes any link that is currently at least partially selected.
+     */
     public func removeLink(completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.removeLink.name,
-        completionHandler: { (_, error) in
-         completion?(error)
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
         })
     }
     
     /**
-    Clear Editor's content. Method removes all Blocks and inserts new initial empty Block
+     Clear Editor's content. Method removes all Blocks and inserts new initial empty Block
      `<div><br></div>`
-    */
+     */
     public func clear(completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.clear.name,
-        completionHandler: { (_, error) in
-         completion?(error)
+                                   completionHandler: { (_, error) in
+                                    completion?(error)
         })
     }
 }
@@ -401,7 +419,7 @@ extension SQTextEditorView: WKScriptMessageHandler {
                 if let value = message.body as? NSNumber {
                     delegate?.editor?(self, contentHeightDidChange: value.intValue)
                 }
-
+                
             case .fontInfo:
                 if let dict = message.body as? [String: Any],
                     let data = try? JSONSerialization.data(withJSONObject: dict, options: []),

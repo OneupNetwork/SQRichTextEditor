@@ -50,15 +50,21 @@ class ToolItemCell: UICollectionViewCell {
         
         //TextInfo
         switch option {
-        case .setFontSize:
+        case .setTextSize:
             if let size = attribute.textInfo.size {
                 textLabel.text = "Font Size(\(size)px)"
             }
             
-        case .setFontColor:
+        case .setTextColor:
             if let color = attribute.textInfo.color {
                 textLabel.textColor = color
             }
+            
+        case .setTextBackgroundColor:
+            if let color = attribute.textInfo.backgroundColor {
+                textLabel.textColor = color
+            }
+            
         default:
             break
         }

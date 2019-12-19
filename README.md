@@ -41,7 +41,7 @@ pod 'SQRichTextEditor'
 - [x] Make Link
 - [x] Text Color
 - [x] Text Size
-- [ ] Text Background Color
+- [x] Text Background Color
 - [ ] Alignment: Left
 - [ ] Alignment: Center
 - [ ] Alignment: Right
@@ -146,18 +146,25 @@ By wrapping it in an 'del' tag.
 func strikethrough(completion: ((_ error: Error?) -> ())? = nil)
 ```
 
-### setFontColor
+### setTextColor
 Sets the colour of the selected text.
 
 ```swift
-func setFont(color: UIColor, completion: ((_ error: Error?) -> ())? = nil)
+func setText(color: UIColor, completion: ((_ error: Error?) -> ())? = nil)
 ```
 
-### setFontSize
+### setTextBackgroundColor
+Sets the colour of the background of the selected text.
+
+```swift
+func setText(backgroundColor: UIColor, completion: ((_ error: Error?) -> ())? = nil)
+```
+
+### setTextSize
 Sets the font size for the selected text.
 
 ```swift
-func setFont(size: Int, completion: ((_ error: Error?) -> ())? = nil)
+func setText(size: Int, completion: ((_ error: Error?) -> ())? = nil)
 ```
     
 ### insertImage

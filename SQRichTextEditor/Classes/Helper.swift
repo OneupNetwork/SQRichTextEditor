@@ -13,7 +13,7 @@ struct Helper {
             ? String(string.dropFirst())
             : string
         guard hex.count == 6 else {
-                return UIColor(white: 1.0, alpha: 0.0)
+            return UIColor(white: 1.0, alpha: 0.0)
         }
         
         return UIColor(
