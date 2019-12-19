@@ -327,8 +327,8 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 
                 let size = 25
                 
-                self.editor.setFont(size: size, completion: { error in
-                    XCTAssert(self.editor.selectedTextAttribute.fontInfo.size == size)
+                self.editor.setText(size: size, completion: { error in
+                    XCTAssert(self.editor.selectedTextAttribute.textInfo.size == size)
                     exp.fulfill()
                 })
             })
@@ -355,8 +355,8 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 
                 let color = UIColor.brown
                 
-                self.editor.setFont(color: color, completion: { error in
-                    XCTAssert(self.editor.selectedTextAttribute.fontInfo.color == color)
+                self.editor.setText(color: color, completion: { error in
+                    XCTAssert(self.editor.selectedTextAttribute.textInfo.color == color)
                     exp.fulfill()
                 })
             })

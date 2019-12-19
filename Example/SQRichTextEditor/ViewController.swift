@@ -114,7 +114,7 @@ class ViewController: UIViewController {
                     case .insertImage:
                         self.editorView.insertImage(url: inputValue)
                     case .setFontSize:
-                        self.editorView.setFont(size: Int(inputValue) ?? 20)
+                        self.editorView.setText(size: Int(inputValue) ?? 20)
                     case .insertHTML:
                         self.editorView.insertHTML(inputValue)
                 default:
@@ -205,6 +205,6 @@ extension ViewController: EFColorSelectionViewControllerDelegate {
     
     func colorViewController(_ colorViewCntroller: EFColorSelectionViewController, didChangeColor color: UIColor) {
         selectedColor = color
-        editorView.setFont(color: color)
+        editorView.setText(color: color)
     }
 }

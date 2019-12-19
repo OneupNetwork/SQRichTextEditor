@@ -39,8 +39,8 @@ public class SQTextEditorView: UIView {
         case getSelectedText
         case setFormat(type: RichTextFormatType)
         case removeFormat(type: RichTextFormatType)
-        case setFontColor(hex: String)
-        case setFontSize(size: Int)
+        case setTextColor(hex: String)
+        case setTextSize(size: Int)
         case insertImage(url: String)
         case makeLink(url: String)
         case removeLink
@@ -66,10 +66,10 @@ public class SQTextEditorView: UIView {
             case .removeFormat(let type):
                 return "removeFormat('\(type.keyName)')"
                 
-            case .setFontColor(let hex):
+            case .setTextColor(let hex):
                 return "setFontColor('\(hex)')"
                 
-            case .setFontSize(let size):
+            case .setTextSize(let size):
                 return "setFontSize('\(size)')"
                 
             case .insertImage(let url):
@@ -318,10 +318,10 @@ public class SQTextEditorView: UIView {
     
     - Parameter color: The colour to set.
     */
-    public func setFont(color: UIColor, completion: ((_ error: Error?) -> ())? = nil) {
+    public func setText(color: UIColor, completion: ((_ error: Error?) -> ())? = nil) {
         let hex = Helper.rgbColorToHex(color: color)
         
-        webView.evaluateJavaScript(JSFunctionType.setFontColor(hex: hex).name,
+        webView.evaluateJavaScript(JSFunctionType.setTextColor(hex: hex).name,
         completionHandler: { (_, error) in
          completion?(error)
         })
@@ -332,8 +332,8 @@ public class SQTextEditorView: UIView {
     
     - Parameter size: A size to set. The absolute length units will be 'px'
     */
-    public func setFont(size: Int, completion: ((_ error: Error?) -> ())? = nil) {
-        webView.evaluateJavaScript(JSFunctionType.setFontSize(size: size).name,
+    public func setText(size: Int, completion: ((_ error: Error?) -> ())? = nil) {
+        webView.evaluateJavaScript(JSFunctionType.setTextSize(size: size).name,
         completionHandler: { (_, error) in
          completion?(error)
         })
@@ -405,8 +405,8 @@ extension SQTextEditorView: WKScriptMessageHandler {
             case .fontInfo:
                 if let dict = message.body as? [String: Any],
                     let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                    let fontInto = try? JSONDecoder().decode(SQTextAttributeFontInfo.self, from: data) {
-                    selectedTextAttribute.fontInfo = fontInto
+                    let fontInto = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
+                    selectedTextAttribute.textInfo = fontInto
                     delegate?.editor?(self, selectedTextAttributeDidChange: selectedTextAttribute)
                 }
                 

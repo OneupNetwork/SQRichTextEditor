@@ -9,7 +9,7 @@ import Foundation
 
 public class SQTextAttribute: NSObject {
     public var format = SQTextAttributeFormat()
-    public var fontInfo = SQTextAttributeFontInfo()
+    public var textInfo = SQTextAttributeTextInfo()
 }
 
 public struct SQTextAttributeFormat: Codable {
@@ -28,9 +28,10 @@ public struct SQTextAttributeFormat: Codable {
     }
 }
 
-public struct SQTextAttributeFontInfo: Codable {
+public struct SQTextAttributeTextInfo: Codable {
     private var textColor: String?
     private var textBackgroundColor: String?
+    
     public var size: Int?
     
     public var color: UIColor? {

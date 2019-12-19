@@ -48,15 +48,15 @@ class ToolItemCell: UICollectionViewCell {
         textLabel.font = isActive ? ToolItemCellSettings.activeFont : ToolItemCellSettings.normalfont
         textLabel.textColor = isActive ? ToolItemCellSettings.activeColor : ToolItemCellSettings.normalColor
         
-        //FontInfo
+        //TextInfo
         switch option {
         case .setFontSize:
-            if let size = attribute.fontInfo.size {
+            if let size = attribute.textInfo.size {
                 textLabel.text = "Font Size(\(size)px)"
             }
             
         case .setFontColor:
-            if let color = attribute.fontInfo.color {
+            if let color = attribute.textInfo.color {
                 textLabel.textColor = color
             }
         default:
