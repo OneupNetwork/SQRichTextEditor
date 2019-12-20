@@ -5,8 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
 [![Platform](https://img.shields.io/cocoapods/p/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
 
-## Why I built SQRichTextEditor
-I was looking for a text editor for iOS and found some solutions that didn't use `WKWebView`. Apple will stop accepting submissions of apps that use UIWebView [APIs](https://developer.apple.com/documentation/uikit/uiwebview). I found a [HTML5 rich text editor](https://github.com/neilj/Squire), which provides powerful cross-browser normalisation in a flexible lightweight package. So I built this project and an iOS [bridge](https://github.com/OneupNetwork/Squire-native-bridge) for sending messages between Swift and JavaScript in WKWebView. 
+## Introduction
+I was looking for a WYSIWYG text editor for iOS and found some solutions but all of them didn't use `WKWebView`. Apple will stop accepting submissions of apps that use UIWebView [APIs](https://developer.apple.com/documentation/uikit/uiwebview). I found a [HTML5 rich text editor](https://github.com/neilj/Squire), which provides powerful cross-browser normalisation in a flexible lightweight package. So I built this project and an iOS [bridge](https://github.com/OneupNetwork/Squire-native-bridge) for sending messages between Swift and JavaScript in WKWebView. 
 
 ## Example
 
@@ -195,8 +195,13 @@ Clear Editor's content. Method removes all Blocks and inserts new initial empty 
 ```swift
 func clear(completion: ((_ error: Error?) -> ())? = nil)
 ```
-   
 
+## Contributions
+
+`SQRichTextEditor` welcomes both fixes, improvements, and feature additions. If you'd like to contribute, open a pull request with a detailed description of your changes. 
+
+If you'd like to fix or add some functions for `editor.js` or `editor.css`, you can open a pull request in this [repo](https://github.com/OneupNetwork/Squire-native-bridge).
+   
 ## Author
 
 Yuwei Lin, jesse@gamer.com.tw @ [OneupNetwork](https://www.gamer.com.tw/)
@@ -204,6 +209,7 @@ Yuwei Lin, jesse@gamer.com.tw @ [OneupNetwork](https://www.gamer.com.tw/)
 ## License
 
 SQRichTextEditor is available under the MIT license. See the LICENSE file for more info.
+
 
 ## Attribution
 
