@@ -8,6 +8,7 @@
 
 import UIKit
 import SQRichTextEditor
+import WebKit
 
 class ViewController: UIViewController {
     
@@ -172,6 +173,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                 editorView.getHTML { html in
                     self.showAlert(text: html)
                 }
+            case .focusEditor:
+                editorView.focus(true)
+            case .blurEditor:
+                editorView.focus(false)
             }
         }
     }

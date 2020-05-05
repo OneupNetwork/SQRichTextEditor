@@ -10,14 +10,14 @@ import WebKit
 
 @objc public protocol SQTextEditorDelegate: class {
     
-    //Called when the editor components is ready.
+    /// Called when the editor components is ready.
     @objc optional func editorDidLoad(_ editor: SQTextEditorView)
     
-    //Called when the user selected some text or moved the cursor to a different position.
+    /// Called when the user selected some text or moved the cursor to a different position.
     @objc optional func editor(_ editor: SQTextEditorView,
                                selectedTextAttributeDidChange attribute: SQTextAttribute)
     
-    //Called when the user inserted, deleted or changed the style of some text.
+    /// Called when the user inserted, deleted or changed the style of some text.
     @objc optional func editor(_ editor: SQTextEditorView,
                                contentHeightDidChange height: Int)
 }
@@ -46,6 +46,7 @@ public class SQTextEditorView: UIView {
         case makeLink(url: String)
         case removeLink
         case clear
+        case focusEditor
         
         var name: String {
             switch self {
@@ -87,6 +88,9 @@ public class SQTextEditorView: UIView {
                 
             case .clear:
                 return "clear()"
+                
+            case .focusEditor:
+                return "focusEditor()"
             }
         }
     }
@@ -117,7 +121,7 @@ public class SQTextEditorView: UIView {
         }
     }
     
-    private lazy var webView : WKWebView = {
+    public lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
         config.preferences = WKPreferences()
         config.preferences.minimumFontSize = 10
@@ -134,6 +138,7 @@ public class SQTextEditorView: UIView {
         _webView.translatesAutoresizingMaskIntoConstraints = false
         _webView.navigationDelegate = self
         _webView.allowsLinkPreview = false
+        _webView.setKeyboardRequiresUserInteraction(false)
         return _webView
     }()
     
@@ -400,6 +405,20 @@ public class SQTextEditorView: UIView {
                                    completionHandler: { (_, error) in
                                     completion?(error)
         })
+    }
+    
+    /**
+     The editor gained focus or lost focus
+     */
+    public func focus(_ isFocused: Bool, completion: ((_ error: Error?) -> ())? = nil) {
+        if isFocused {
+            webView.evaluateJavaScript(JSFunctionType.focusEditor.name,
+                                       completionHandler: { (_, error) in
+                                        completion?(error)
+            })
+        } else {
+            webView.endEditing(true)
+        }
     }
 }
 

@@ -35,6 +35,8 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
     case setTextSize
     case insertHTML
     case getHTML
+    case focusEditor
+    case blurEditor
     
     var description: String {
         switch self {
@@ -64,6 +66,10 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
             return "Insert HTML"
         case .getHTML:
             return "Get HTML"
+        case .focusEditor:
+            return "focusEditor"
+        case .blurEditor:
+        return "blurEditor"
         }
     }
 }
