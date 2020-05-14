@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
 [![License](https://img.shields.io/cocoapods/l/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
 [![Platform](https://img.shields.io/cocoapods/p/SQRichTextEditor.svg?style=flat)](https://cocoapods.org/pods/SQRichTextEditor)
+[![Swift Version](https://img.shields.io/badge/swift-5.2-orange.svg)](https://git.zsinfo.nl/Zandor300/GeneralToolsFramework)
 
 ## Introduction
 I was looking for a WYSIWYG text editor for iOS and found some solutions but all of them didn't use `WKWebView`. Apple will stop accepting submissions of apps that use UIWebView [APIs](https://developer.apple.com/documentation/uikit/uiwebview). I found a [HTML5 rich text editor](https://github.com/neilj/Squire), which provides powerful cross-browser normalisation in a flexible lightweight package. So I built this project and an iOS [bridge](https://github.com/OneupNetwork/Squire-native-bridge) for sending messages between Swift and JavaScript in WKWebView. 
