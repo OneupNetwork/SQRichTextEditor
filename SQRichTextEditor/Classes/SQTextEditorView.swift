@@ -142,6 +142,12 @@ public class SQTextEditorView: UIView {
         return _webView
     }()
     
+    private lazy var editorEventQueue: OperationQueue = {
+        let _editorEventQueue = OperationQueue()
+        _editorEventQueue.maxConcurrentOperationCount = 1
+        return _editorEventQueue
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -433,26 +439,39 @@ extension SQTextEditorView: WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController,
                                       didReceive message: WKScriptMessage) {
         if let name = JSMessageName(rawValue: message.name) {
-            switch name {
-            case .contentHeight:
-                if let value = message.body as? NSNumber {
-                    delegate?.editor?(self, contentHeightDidChange: value.intValue)
-                }
-                
-            case .fontInfo:
-                if let dict = message.body as? [String: Any],
-                    let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                    let fontInto = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
-                    selectedTextAttribute.textInfo = fontInto
-                    delegate?.editor?(self, selectedTextAttributeDidChange: selectedTextAttribute)
-                }
-                
-            case .format:
-                if let dict = message.body as? [String: Bool],
-                    let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                    let format = try? JSONDecoder().decode(SQTextAttributeFormat.self, from: data) {
-                    selectedTextAttribute.format = format
-                    delegate?.editor?(self, selectedTextAttributeDidChange: selectedTextAttribute)
+
+            let body: Any = message.body
+
+            editorEventQueue.addOperation { [weak self] in
+                guard let self = `self` else { return }
+
+                switch name {
+                case .contentHeight:
+                    if let value = body as? NSNumber {
+                        DispatchQueue.main.async {
+                            self.delegate?.editor?(self, contentHeightDidChange: value.intValue)
+                        }
+                    }
+
+                case .format:
+                    if let dict = body as? [String: Bool],
+                        let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                        let format = try? JSONDecoder().decode(SQTextAttributeFormat.self, from: data) {
+                        self.selectedTextAttribute.format = format
+                        DispatchQueue.main.async {
+                            self.delegate?.editor?(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
+                        }
+                    }
+
+                case .fontInfo:
+                    if let dict = body as? [String: Any],
+                        let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                        let fontInto = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
+                        self.selectedTextAttribute.textInfo = fontInto
+                        DispatchQueue.main.async {
+                            self.delegate?.editor?(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
+                        }
+                    }
                 }
             }
         }
