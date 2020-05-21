@@ -206,6 +206,10 @@ extension ViewController: SQTextEditorDelegate {
     func editor(_ editor: SQTextEditorView, contentHeightDidChange height: Int) {
         print("contentHeightDidChange = \(height)")
     }
+    
+    func editorDidFocus(_ editor: SQTextEditorView) {
+        print("editorDidFocus")
+    }
 }
 
 extension ViewController: EFColorSelectionViewControllerDelegate {

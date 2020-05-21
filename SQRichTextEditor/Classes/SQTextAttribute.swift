@@ -70,3 +70,14 @@ public struct SQTextAttributeTextInfo: Codable {
         }
     }
 }
+
+public struct SQEditorCursorPosition: Codable {
+    public var bottom: Double = 0
+    public var height: Double = 0
+    public var left: Double = 0
+    public var right: Double = 0
+    public var top: Double = 0
+    public var width: Double = 0
+    public var x: Double = 0
+    public var y: Double = 0
+}

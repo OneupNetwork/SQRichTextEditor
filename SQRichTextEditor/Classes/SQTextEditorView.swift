@@ -8,18 +8,29 @@
 import UIKit
 import WebKit
 
-@objc public protocol SQTextEditorDelegate: class {
+public protocol SQTextEditorDelegate: class {
     
     /// Called when the editor components is ready.
-    @objc optional func editorDidLoad(_ editor: SQTextEditorView)
+    func editorDidLoad(_ editor: SQTextEditorView)
     
     /// Called when the user selected some text or moved the cursor to a different position.
-    @objc optional func editor(_ editor: SQTextEditorView,
-                               selectedTextAttributeDidChange attribute: SQTextAttribute)
+    func editor(_ editor: SQTextEditorView, selectedTextAttributeDidChange attribute: SQTextAttribute)
     
     /// Called when the user inserted, deleted or changed the style of some text.
-    @objc optional func editor(_ editor: SQTextEditorView,
-                               contentHeightDidChange height: Int)
+    func editor(_ editor: SQTextEditorView, contentHeightDidChange height: Int)
+    
+    func editorDidFocus(_ editor: SQTextEditorView)
+    
+    func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition)
+}
+
+/// Make optional protocol methods
+public extension SQTextEditorDelegate {
+    func editorDidLoad(_ editor: SQTextEditorView) {}
+    func editor(_ editor: SQTextEditorView, selectedTextAttributeDidChange attribute: SQTextAttribute) {}
+    func editor(_ editor: SQTextEditorView, contentHeightDidChange height: Int) {}
+    func editorDidFocus(_ editor: SQTextEditorView) {}
+    func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {}
 }
 
 public class SQTextEditorView: UIView {
@@ -46,7 +57,7 @@ public class SQTextEditorView: UIView {
         case makeLink(url: String)
         case removeLink
         case clear
-        case focusEditor
+        case focusEditor(isFocused: Bool)
         
         var name: String {
             switch self {
@@ -89,8 +100,8 @@ public class SQTextEditorView: UIView {
             case .clear:
                 return "clear()"
                 
-            case .focusEditor:
-                return "focusEditor()"
+            case .focusEditor(let isFocused):
+                return "focusEditor('\(isFocused)')"
             }
         }
     }
@@ -99,6 +110,8 @@ public class SQTextEditorView: UIView {
         case contentHeight = "contentHeight"
         case fontInfo = "fontInfo"
         case format = "format"
+        case isFocused = "isFocused"
+        case cursorPosition = "cursorPosition"
     }
     
     private enum RichTextFormatType {
@@ -417,20 +430,19 @@ public class SQTextEditorView: UIView {
      The editor gained focus or lost focus
      */
     public func focus(_ isFocused: Bool, completion: ((_ error: Error?) -> ())? = nil) {
-        if isFocused {
-            webView.evaluateJavaScript(JSFunctionType.focusEditor.name,
-                                       completionHandler: { (_, error) in
-                                        completion?(error)
-            })
-        } else {
-            webView.endEditing(true)
-        }
+        webView.evaluateJavaScript(JSFunctionType.focusEditor(isFocused: isFocused).name,
+                                   completionHandler: { [weak self] (_, error) in
+                                    if !isFocused {
+                                        self?.webView.endEditing(true)
+                                    }
+                                    completion?(error)
+        })
     }
 }
 
 extension SQTextEditorView: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.delegate?.editorDidLoad?(self)
+        self.delegate?.editorDidLoad(self)
     }
 }
 
@@ -449,7 +461,7 @@ extension SQTextEditorView: WKScriptMessageHandler {
                 case .contentHeight:
                     if let value = body as? NSNumber {
                         DispatchQueue.main.async {
-                            self.delegate?.editor?(self, contentHeightDidChange: value.intValue)
+                            self.delegate?.editor(self, contentHeightDidChange: value.intValue)
                         }
                     }
 
@@ -459,7 +471,7 @@ extension SQTextEditorView: WKScriptMessageHandler {
                         let format = try? JSONDecoder().decode(SQTextAttributeFormat.self, from: data) {
                         self.selectedTextAttribute.format = format
                         DispatchQueue.main.async {
-                            self.delegate?.editor?(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
+                            self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
                         }
                     }
 
@@ -469,7 +481,23 @@ extension SQTextEditorView: WKScriptMessageHandler {
                         let fontInto = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
                         self.selectedTextAttribute.textInfo = fontInto
                         DispatchQueue.main.async {
-                            self.delegate?.editor?(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
+                            self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
+                        }
+                    }
+                    
+                case .isFocused:
+                    if let value = body as? Bool, value {
+                        DispatchQueue.main.async {
+                            self.delegate?.editorDidFocus(self)
+                        }
+                    }
+                    
+                case .cursorPosition:
+                    if let dict = body as? [String: Any],
+                        let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                    let position = try? JSONDecoder().decode(SQEditorCursorPosition.self, from: data) {
+                        DispatchQueue.main.async {
+                            self.delegate?.editor(self, cursorPositionDidChange: position)
                         }
                     }
                 }
