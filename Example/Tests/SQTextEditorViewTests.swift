@@ -120,29 +120,29 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
         waitForExpectations(timeout: timeout, handler: nil)
     }
     
-    func testBold() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let tagId = "test"
-        
-        let testHtml = "<div id=\"\(tagId)\">123</div>"
-        
-        editor.insertHTML(testHtml) { error in
-            XCTAssertNil(error)
-            
-            self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
-                XCTAssertNil(error)
-                
-                self.editor.bold { error in
-                    XCTAssertNil(error)
-                    XCTAssert(self.editor.selectedTextAttribute.format.hasBold)
-                    exp.fulfill()
-                }
-            })
-        }
-        
-        waitForExpectations(timeout: timeout, handler: nil)
-    }
+//    func testBold() {
+//        let exp = expectation(description: "\(#function)\(#line)")
+//        
+//        let tagId = "test"
+//        
+//        let testHtml = "<div id=\"\(tagId)\">123</div>"
+//        
+//        editor.insertHTML(testHtml) { error in
+//            XCTAssertNil(error)
+//            
+//            self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
+//                XCTAssertNil(error)
+//                
+//                self.editor.bold { error in
+//                    XCTAssertNil(error)
+//                    XCTAssert(self.editor.selectedTextAttribute.format.hasBold)
+//                    exp.fulfill()
+//                }
+//            })
+//        }
+//        
+//        waitForExpectations(timeout: timeout, handler: nil)
+//    }
     
     func testRemoveBold() {
         let exp = expectation(description: "\(#function)\(#line)")
