@@ -35,6 +35,11 @@ class ViewController: UIViewController {
     
     private var selectedOption: ToolOptionType?
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("didReceiveMemoryWarning")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -209,6 +214,10 @@ extension ViewController: SQTextEditorDelegate {
     
     func editorDidFocus(_ editor: SQTextEditorView) {
         print("editorDidFocus")
+    }
+    
+    func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {
+        print(position)
     }
 }
 
