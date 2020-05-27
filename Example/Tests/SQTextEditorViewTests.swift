@@ -123,17 +123,18 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testBold() {
         let exp = expectation(description: "\(#function)\(#line)")
 
-        let tagId = "test"
-
-        let testHtml = "<div id=\"\(tagId)\">123</div>"
-
+        let tagId = "testBold"
+        let testValue = "123"
+        let testHtml = makeTestHTML(id: tagId, value: testValue)
+        
         editor.insertHTML(testHtml) { error in
             XCTAssertNil(error)
 
             self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
                 XCTAssertNil(error)
-
+                
                 self.editor.bold { error in
+                    sleep(1)
                     XCTAssertNil(error)
                     XCTAssert(self.editor.selectedTextAttribute.format.hasBold)
                     exp.fulfill()
@@ -141,30 +142,6 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
             })
         }
 
-        waitForExpectations(timeout: timeout, handler: nil)
-    }
-    
-    func testRemoveBold() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let tagId = "test"
-        
-        let testHtml = "<b id=\"\(tagId)\">123</b>"
-        
-        editor.insertHTML(testHtml) { error in
-            XCTAssertNil(error)
-            
-            self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
-                XCTAssertNil(error)
-                
-                self.editor.bold { error in
-                    XCTAssertNil(error)
-                    XCTAssertFalse(self.editor.selectedTextAttribute.format.hasBold)
-                    exp.fulfill()
-                }
-            })
-        }
-        
         waitForExpectations(timeout: timeout, handler: nil)
     }
     
@@ -182,32 +159,9 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 XCTAssertNil(error)
                 
                 self.editor.italic { error in
+                    sleep(1)
                     XCTAssertNil(error)
                     XCTAssert(self.editor.selectedTextAttribute.format.hasItalic)
-                    exp.fulfill()
-                }
-            })
-        }
-        
-        waitForExpectations(timeout: timeout, handler: nil)
-    }
-    
-    func testRemoveItalic() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let tagId = "test"
-        
-        let testHtml = "<i id=\"\(tagId)\">123</i>"
-        
-        editor.insertHTML(testHtml) { error in
-            XCTAssertNil(error)
-            
-            self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
-                XCTAssertNil(error)
-                
-                self.editor.italic { error in
-                    XCTAssertNil(error)
-                    XCTAssertFalse(self.editor.selectedTextAttribute.format.hasItalic)
                     exp.fulfill()
                 }
             })
@@ -219,7 +173,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testUnderline() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "test"
+        let tagId = "testUnderline"
         
         let testHtml = "<div id=\"\(tagId)\">123</div>"
         
@@ -230,32 +184,9 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 XCTAssertNil(error)
                 
                 self.editor.underline { error in
+                    sleep(1)
                     XCTAssertNil(error)
                     XCTAssert(self.editor.selectedTextAttribute.format.hasUnderline)
-                    exp.fulfill()
-                }
-            })
-        }
-        
-        waitForExpectations(timeout: timeout, handler: nil)
-    }
-    
-    func testRemoveUnderline() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let tagId = "test"
-        
-        let testHtml = "<u id=\"\(tagId)\">123</u>"
-        
-        editor.insertHTML(testHtml) { error in
-            XCTAssertNil(error)
-            
-            self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
-                XCTAssertNil(error)
-                
-                self.editor.underline { error in
-                    XCTAssertNil(error)
-                    XCTAssertFalse(self.editor.selectedTextAttribute.format.hasUnderline)
                     exp.fulfill()
                 }
             })
@@ -267,7 +198,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testStrikethrough() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "test"
+        let tagId = "testStrikethrough"
         
         let testHtml = "<div id=\"\(tagId)\">123</div>"
         
@@ -278,32 +209,9 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 XCTAssertNil(error)
                 
                 self.editor.strikethrough { error in
+                    sleep(1)
                     XCTAssertNil(error)
                     XCTAssert(self.editor.selectedTextAttribute.format.hasStrikethrough)
-                    exp.fulfill()
-                }
-            })
-        }
-        
-        waitForExpectations(timeout: timeout, handler: nil)
-    }
-    
-    func testRemoveStrikethrough() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let tagId = "test"
-        
-        let testHtml = "<del id=\"\(tagId)\">123</del>"
-        
-        editor.insertHTML(testHtml) { error in
-            XCTAssertNil(error)
-            
-            self.editor.setTextSelection(startElementId: tagId, startIndex: 0, endElementId: tagId, endIndex: 2, completion: { error in
-                XCTAssertNil(error)
-                
-                self.editor.strikethrough { error in
-                    XCTAssertNil(error)
-                    XCTAssertFalse(self.editor.selectedTextAttribute.format.hasStrikethrough)
                     exp.fulfill()
                 }
             })
@@ -315,7 +223,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testSetTextSize() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "test"
+        let tagId = "testSetTextSize"
         
         let testHtml = "<div id=\"\(tagId)\">123</div>"
         
@@ -328,6 +236,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 let size = 25
                 
                 self.editor.setText(size: size, completion: { error in
+                    sleep(1)
                     XCTAssert(self.editor.selectedTextAttribute.textInfo.size == size)
                     exp.fulfill()
                 })
@@ -340,7 +249,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testSetTextColor() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "test"
+        let tagId = "testSetTextColor"
         let testHtml = makeTestHTML(id: tagId, value: "test")
         
         editor.insertHTML(testHtml) { error in
@@ -356,6 +265,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 let color = UIColor.brown
                 
                 self.editor.setText(color: color, completion: { error in
+                    sleep(1)
                     XCTAssert(self.editor.selectedTextAttribute.textInfo.color == color)
                     exp.fulfill()
                 })
@@ -368,7 +278,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testSetTextBackgroundColor() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "test"
+        let tagId = "testSetTextBackgroundColor"
         let testHtml = makeTestHTML(id: tagId, value: "test")
         
         editor.insertHTML(testHtml) { error in
@@ -384,6 +294,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
                 let color = UIColor.brown
                 
                 self.editor.setText(backgroundColor: color, completion: { error in
+                    sleep(1)
                     XCTAssert(self.editor.selectedTextAttribute.textInfo.backgroundColor == color)
                     exp.fulfill()
                 })
@@ -453,7 +364,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testRemoveLink() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "logo"
+        let tagId = "testRemoveLink"
         let value = "123"
         let testHtml = makeTestHTML(id: tagId, value: value)
         
@@ -494,7 +405,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     func testClearEditor() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let tagId = "test"
+        let tagId = "testClearEditor"
         let value = "123"
         let testHtml = makeTestHTML(id: tagId, value: value)
         
@@ -523,12 +434,5 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     
     func editorDidLoad(_ editor: SQTextEditorView) {
         editorDidLoadHandler?()
-    }
-    
-    func editor(_ editor: SQTextEditorView, selectedTextAttributeDidChange attribute: SQTextAttribute) {
-    }
-    
-    func editor(_ editor: SQTextEditorView, contentHeightDidChange height: Int) {
-        print("contentHeightDidChange = \(height)")
     }
 }

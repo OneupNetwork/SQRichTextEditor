@@ -37,6 +37,7 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
     case getHTML
     case focusEditor
     case blurEditor
+    case getHeight
     
     var description: String {
         switch self {
@@ -69,7 +70,9 @@ enum ToolOptionType: Int, CustomStringConvertible, CaseIterable {
         case .focusEditor:
             return "focusEditor"
         case .blurEditor:
-        return "blurEditor"
+            return "blurEditor"
+        case .getHeight:
+            return "Get Editor Height"
         }
     }
 }

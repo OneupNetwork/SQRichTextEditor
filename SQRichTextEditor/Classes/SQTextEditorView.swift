@@ -58,6 +58,7 @@ public class SQTextEditorView: UIView {
         case removeLink
         case clear
         case focusEditor(isFocused: Bool)
+        case getEditorHeight
         
         var name: String {
             switch self {
@@ -102,6 +103,9 @@ public class SQTextEditorView: UIView {
                 
             case .focusEditor(let isFocused):
                 return "focusEditor('\(isFocused)')"
+                
+            case .getEditorHeight:
+                return "getEditorHeight()"
             }
         }
     }
@@ -160,6 +164,8 @@ public class SQTextEditorView: UIView {
         _editorEventQueue.maxConcurrentOperationCount = 1
         return _editorEventQueue
     }()
+    
+    private lazy var lastEditorHeight: Int = 0
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -438,6 +444,17 @@ public class SQTextEditorView: UIView {
                                     completion?(error)
         })
     }
+    
+    public func getHeight(completion: ((_ height: Int?, _ error: Error?) -> ())? = nil) {
+        webView.evaluateJavaScript(JSFunctionType.getEditorHeight.name,
+                                   completionHandler: { (height, error) in
+                                    if let height = height as? Int, error == nil {
+                                        completion?(height, nil)
+                                    } else {
+                                        completion?(nil, error)
+                                    }
+        })
+    }
 }
 
 extension SQTextEditorView: WKNavigationDelegate {
@@ -451,20 +468,24 @@ extension SQTextEditorView: WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController,
                                       didReceive message: WKScriptMessage) {
         if let name = JSMessageName(rawValue: message.name) {
-
+            
             let body: Any = message.body
-
+            
             editorEventQueue.addOperation { [weak self] in
                 guard let self = `self` else { return }
-
+                
                 switch name {
                 case .contentHeight:
                     if let value = body as? NSNumber {
-                        DispatchQueue.main.async {
-                            self.delegate?.editor(self, contentHeightDidChange: value.intValue)
+                        if self.lastEditorHeight != value.intValue {
+                            self.lastEditorHeight = value.intValue
+                            DispatchQueue.main.async {
+                                self.delegate?.editor(self, contentHeightDidChange: value.intValue)
+                            }
                         }
+                        
                     }
-
+                    
                 case .format:
                     if let dict = body as? [String: Bool],
                         let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
@@ -474,7 +495,7 @@ extension SQTextEditorView: WKScriptMessageHandler {
                             self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
                         }
                     }
-
+                    
                 case .fontInfo:
                     if let dict = body as? [String: Any],
                         let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
@@ -495,7 +516,7 @@ extension SQTextEditorView: WKScriptMessageHandler {
                 case .cursorPosition:
                     if let dict = body as? [String: Any],
                         let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                    let position = try? JSONDecoder().decode(SQEditorCursorPosition.self, from: data) {
+                        let position = try? JSONDecoder().decode(SQEditorCursorPosition.self, from: data) {
                         DispatchQueue.main.async {
                             self.delegate?.editor(self, cursorPositionDidChange: position)
                         }

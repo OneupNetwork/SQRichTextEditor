@@ -182,6 +182,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                 editorView.focus(true)
             case .blurEditor:
                 editorView.focus(false)
+            case .getHeight:
+                editorView.getHeight { (height, error) in
+                    self.showAlert(text: "\(height ?? 0)")
+                }
             }
         }
     }
