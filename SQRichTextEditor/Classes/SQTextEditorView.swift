@@ -39,6 +39,8 @@ public class SQTextEditorView: UIView {
     
     public lazy var selectedTextAttribute = SQTextAttribute()
     
+    public lazy var contentHeight: Int = 0
+    
     private enum JSFunctionType {
         case getHTML
         case insertHTML(html: String)
@@ -111,7 +113,6 @@ public class SQTextEditorView: UIView {
     }
     
     private enum JSMessageName: String, CaseIterable {
-        case contentHeight = "contentHeight"
         case fontInfo = "fontInfo"
         case format = "format"
         case isFocused = "isFocused"
@@ -165,7 +166,16 @@ public class SQTextEditorView: UIView {
         return _editorEventQueue
     }()
     
-    private lazy var lastEditorHeight: Int = 0
+    private var lastContentHeight: Int = 0 {
+        didSet {
+            if contentHeight != lastContentHeight {
+                contentHeight = lastContentHeight
+                delegate?.editor(self, contentHeightDidChange: contentHeight)
+            }
+        }
+    }
+    
+    private var timer: RepeatingTimer?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -180,6 +190,8 @@ public class SQTextEditorView: UIView {
     }
     
     deinit {
+        timer = nil
+        
         JSMessageName.allCases.forEach {
             webView
                 .configuration
@@ -224,6 +236,32 @@ public class SQTextEditorView: UIView {
         webView.evaluateJavaScript(JSFunctionType.removeFormat(type: type).name,
                                    completionHandler: { (_, error) in
                                     completion?(error)
+        })
+    }
+    
+    private func observerContentHeight() {
+        timer = nil
+        
+        timer = RepeatingTimer(timeInterval: 0.2)
+        
+        timer?.eventHandler = { [weak self] in
+            guard let self = `self` else { return }
+            
+            DispatchQueue.main.async {
+                self.getEditorHeight()
+            }
+        }
+        
+        timer?.resume()
+    }
+    
+    private func getEditorHeight() {
+        webView.evaluateJavaScript(JSFunctionType.getEditorHeight.name,
+                                   completionHandler: { [weak self] (height, error) in
+                                    guard let self = `self` else { return }
+                                    if let height = height as? Int, error == nil {
+                                        self.lastContentHeight = height
+                                    }
         })
     }
     
@@ -444,22 +482,12 @@ public class SQTextEditorView: UIView {
                                     completion?(error)
         })
     }
-    
-    public func getHeight(completion: ((_ height: Int?, _ error: Error?) -> ())? = nil) {
-        webView.evaluateJavaScript(JSFunctionType.getEditorHeight.name,
-                                   completionHandler: { (height, error) in
-                                    if let height = height as? Int, error == nil {
-                                        completion?(height, nil)
-                                    } else {
-                                        completion?(nil, error)
-                                    }
-        })
-    }
 }
 
 extension SQTextEditorView: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.delegate?.editorDidLoad(self)
+        observerContentHeight()
+        delegate?.editorDidLoad(self)
     }
 }
 
@@ -475,23 +503,12 @@ extension SQTextEditorView: WKScriptMessageHandler {
                 guard let self = `self` else { return }
                 
                 switch name {
-                case .contentHeight:
-                    if let value = body as? NSNumber {
-                        if self.lastEditorHeight != value.intValue {
-                            self.lastEditorHeight = value.intValue
-                            DispatchQueue.main.async {
-                                self.delegate?.editor(self, contentHeightDidChange: value.intValue)
-                            }
-                        }
-                        
-                    }
-                    
                 case .format:
                     if let dict = body as? [String: Bool],
                         let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
                         let format = try? JSONDecoder().decode(SQTextAttributeFormat.self, from: data) {
-                        self.selectedTextAttribute.format = format
                         DispatchQueue.main.async {
+                            self.selectedTextAttribute.format = format
                             self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
                         }
                     }
@@ -499,9 +516,9 @@ extension SQTextEditorView: WKScriptMessageHandler {
                 case .fontInfo:
                     if let dict = body as? [String: Any],
                         let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                        let fontInto = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
-                        self.selectedTextAttribute.textInfo = fontInto
+                        let fontInfo = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
                         DispatchQueue.main.async {
+                            self.selectedTextAttribute.textInfo = fontInfo
                             self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
                         }
                     }

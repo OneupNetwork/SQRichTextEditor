@@ -19,6 +19,7 @@
 		889E5B15239F5643003CAE8A /* editor.css in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B12239F5643003CAE8A /* editor.css */; };
 		889E5B16239F5643003CAE8A /* squire-raw.js in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B13239F5643003CAE8A /* squire-raw.js */; };
 		889E5B18239F8A77003CAE8A /* editor.js in Resources */ = {isa = PBXBuildFile; fileRef = 889E5B17239F8A77003CAE8A /* editor.js */; };
+		BE096B612480F68000A07A96 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE096B5F2480F62500A07A96 /* RepeatingTimer.swift */; };
 		BE21C58724612B8000AA9BA6 /* KeyboardRequiresUserInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21C58524612A7200AA9BA6 /* KeyboardRequiresUserInteraction.swift */; };
 		D75D3EA4D03B7A25E61C8B802025CD7F /* Pods-SQRichTextEditor_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 544DA90A0B8F791CB55D96F50AC8D154 /* Pods-SQRichTextEditor_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2B538ED8831BDCE58D9614792EA8CA9 /* Pods-SQRichTextEditor_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2434FFF8A8728F3A4587EFEA700B98A4 /* Pods-SQRichTextEditor_Tests-dummy.m */; };
@@ -79,6 +80,7 @@
 		A7ED5D97B1367357829D6D550882433E /* Pods-SQRichTextEditor_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SQRichTextEditor_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A821DB0DBE37A3A024D72896829D7D0B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B0B50AB688BE21BBB27D8C752BA1B5C4 /* Pods-SQRichTextEditor_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SQRichTextEditor_Tests-Info.plist"; sourceTree = "<group>"; };
+		BE096B5F2480F62500A07A96 /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		BE21C58524612A7200AA9BA6 /* KeyboardRequiresUserInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRequiresUserInteraction.swift; sourceTree = "<group>"; };
 		CE9501A4A538E04173DD695DA188D784 /* SQRichTextEditor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQRichTextEditor-prefix.pch"; sourceTree = "<group>"; };
 		ECCE30481EBF6619CDA501AFAB47175E /* Pods_SQRichTextEditor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SQRichTextEditor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				88896FDF23A22D9300701CDD /* SQTextAttribute.swift */,
 				BE21C58524612A7200AA9BA6 /* KeyboardRequiresUserInteraction.swift */,
 				8801273F23A727D0001E57E2 /* Helper.swift */,
+				BE096B5F2480F62500A07A96 /* RepeatingTimer.swift */,
 			);
 			name = Classes;
 			path = SQRichTextEditor/Classes;
@@ -441,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE21C58724612B8000AA9BA6 /* KeyboardRequiresUserInteraction.swift in Sources */,
+				BE096B612480F68000A07A96 /* RepeatingTimer.swift in Sources */,
 				889E5B0F239F538E003CAE8A /* SQTextEditorView.swift in Sources */,
 				418983B1BBC0CC742DFCAB98FA55F49D /* SQRichTextEditor-dummy.m in Sources */,
 				88896FE123A22EFA00701CDD /* SQTextAttribute.swift in Sources */,
