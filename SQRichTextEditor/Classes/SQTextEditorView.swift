@@ -21,6 +21,8 @@ public protocol SQTextEditorDelegate: class {
     
     func editorDidFocus(_ editor: SQTextEditorView)
     
+    func editorDidTapDoneButton(_ editor: SQTextEditorView)
+    
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition)
 }
 
@@ -30,6 +32,7 @@ public extension SQTextEditorDelegate {
     func editor(_ editor: SQTextEditorView, selectedTextAttributeDidChange attribute: SQTextAttribute) {}
     func editor(_ editor: SQTextEditorView, contentHeightDidChange height: Int) {}
     func editorDidFocus(_ editor: SQTextEditorView) {}
+    func editorDidTapDoneButton(_ editor: SQTextEditorView) {}
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {}
 }
 
@@ -524,9 +527,9 @@ extension SQTextEditorView: WKScriptMessageHandler {
                     }
                     
                 case .isFocused:
-                    if let value = body as? Bool, value {
-                        DispatchQueue.main.async {
-                            self.delegate?.editorDidFocus(self)
+                    DispatchQueue.main.async {
+                        if let value = body as? Bool {
+                            value ? self.delegate?.editorDidFocus(self) : self.delegate?.editorDidTapDoneButton(self)
                         }
                     }
                     

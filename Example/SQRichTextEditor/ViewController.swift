@@ -221,6 +221,10 @@ extension ViewController: SQTextEditorDelegate {
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {
         print(position)
     }
+    
+    func editorDidTapDoneButton(_ editor: SQTextEditorView) {
+        print("editorDidTapDoneButton")
+    }
 }
 
 extension ViewController: EFColorSelectionViewControllerDelegate {
