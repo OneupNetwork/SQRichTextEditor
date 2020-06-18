@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }()
     
     private lazy var editorView: SQTextEditorView = {
-        let _editorView = SQTextEditorView(frame: .zero)
+        let _editorView = SQTextEditorView()
         _editorView.delegate = self
         _editorView.translatesAutoresizingMaskIntoConstraints = false
         return _editorView

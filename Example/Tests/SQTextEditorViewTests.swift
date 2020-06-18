@@ -16,7 +16,7 @@ class SQTextEditorViewTests: XCTestCase, SQTextEditorDelegate {
     override func setUp() {
         super.setUp()
         
-        editor = SQTextEditorView(frame: .zero)
+        editor = SQTextEditorView()
         editor.delegate = self
         
         let exp = expectation(description: "\(#function)\(#line)")

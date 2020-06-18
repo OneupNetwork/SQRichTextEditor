@@ -155,6 +155,26 @@ public class SQTextEditorView: UIView {
             config.userContentController.add(self, name: $0.rawValue)
         }
         
+        //inject css to html
+        if customCss == nil,
+            let cssURL = Bundle(for: SQTextEditorView.self).url(forResource: "editor", withExtension: "css"),
+            let css = try? String(contentsOf: cssURL, encoding: .utf8) {
+            customCss = css
+        }
+        
+        if let css = customCss {
+            let cssStyle = """
+                javascript:(function() {
+                var parent = document.getElementsByTagName('head').item(0);
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = window.atob('\(encodeStringTo64(fromString: css))');
+                parent.appendChild(style)})()
+            """
+            let cssScript = WKUserScript(source: cssStyle, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            config.userContentController.addUserScript(cssScript)
+        }
+        
         let _webView = WKWebView(frame: .zero, configuration: config)
         _webView.translatesAutoresizingMaskIntoConstraints = false
         _webView.navigationDelegate = self
@@ -180,30 +200,35 @@ public class SQTextEditorView: UIView {
     
     private var timer: RepeatingTimer?
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    private var customCss: String?
+    
+    public init(customCss: String? = nil) {
+        self.customCss = customCss
+        super.init(frame: .zero)
         setupUI()
         setupEditor()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
-        setupEditor()
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
         timer = nil
         
         JSMessageName.allCases.forEach {
-            webView
-                .configuration
+            webView.configuration
                 .userContentController
                 .removeScriptMessageHandler(forName: $0.rawValue)
         }
     }
     
     //MARK: - Private Methods
+    
+    private func encodeStringTo64(fromString: String) -> String {
+        let plainData = fromString.data(using: .utf8)
+        return plainData?.base64EncodedString(options: []) ?? ""
+    }
     
     private func setupUI() {
         self.addSubview(webView)
@@ -488,6 +513,7 @@ public class SQTextEditorView: UIView {
 }
 
 extension SQTextEditorView: WKNavigationDelegate {
+
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         observerContentHeight()
         delegate?.editorDidLoad(self)
