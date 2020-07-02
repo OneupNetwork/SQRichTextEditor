@@ -102,7 +102,7 @@ optional func editorDidFocus(_ editor: SQTextEditorView)
 optional func editorDidTapDoneButton(_ editor: SQTextEditorView)
 
 //Called when the editor cursor moved
-func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition)
+optional func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition)
 ```
 
 ## Editor Functions
