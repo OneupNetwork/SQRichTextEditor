@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SQRichTextEditor'
-  s.version          = '0.3.2'
+  s.version          = '1.0.0'
   s.summary          = 'A rich text WYSIWYG editor for iOS base on Squire.'
   s.description      = "A rich text WYSIWYG editor for iOS, which is based on Squire using HTML5 and javascript."
   s.homepage         = 'https://github.com/OneupNetwork/SQRichTextEditor'

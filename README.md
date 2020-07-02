@@ -1,3 +1,4 @@
+
 ![SQRichTextEditor](logo.png)
 
 [![Build Status](https://travis-ci.org/OneupNetwork/SQRichTextEditor.svg?branch=master)](https://travis-ci.org/OneupNetwork/SQRichTextEditor)
@@ -7,7 +8,7 @@
 [![Swift Version](https://img.shields.io/badge/swift-5.2-orange.svg)](https://git.zsinfo.nl/Zandor300/GeneralToolsFramework)
 
 ## Introduction
-I was looking for a WYSIWYG text editor for iOS and found some solutions but all of them didn't use `WKWebView`. Apple will stop accepting submissions of apps that use UIWebView [APIs](https://developer.apple.com/documentation/uikit/uiwebview). I found a [HTML5 rich text editor](https://github.com/neilj/Squire), which provides powerful cross-browser normalisation in a flexible lightweight package. So I built this project and an iOS [bridge](https://github.com/OneupNetwork/Squire-native-bridge) for sending messages between Swift and JavaScript in WKWebView. 
+I was looking for a WYSIWYG text editor for iOS and found some solutions but all of them didn't use `WKWebView`. Apple will stop accepting submissions of apps that use UIWebView [APIs](https://developer.apple.com/documentation/uikit/uiwebview). I found a [HTML5 rich text editor](https://github.com/neilj/Squire), which provides powerful cross-browser normalization in a flexible lightweight package. So I built this project and an iOS [bridge](https://github.com/OneupNetwork/Squire-native-bridge) for sending messages between Swift and JavaScript in WKWebView. 
 
 ## Example
 
@@ -43,12 +44,6 @@ pod 'SQRichTextEditor'
 - [x] Text Color
 - [x] Text Size
 - [x] Text Background Color
-- [ ] Alignment: Left
-- [ ] Alignment: Center
-- [ ] Alignment: Right
-- [ ] Undo
-- [ ] Redo
-- [ ] Default Toolbar
 
 ## Getting Started
 The `SQTextEditorView` is a plain UIView subclass, so you are free to use it wherever you want.
@@ -57,7 +52,15 @@ The `SQTextEditorView` is a plain UIView subclass, so you are free to use it whe
 import SQRichTextEditor
 
 private lazy var editorView: SQTextEditorView = {
-        let _editorView = SQTextEditorView(frame: .zero)
+		/// You can pass the custom css string, if you want to change the default editor style
+		/// var customCss: String?
+        /// if let cssURL = Bundle.main.url(forResource: isDarkMode ? "editor_dark" : "editor_light", withExtension: "css"),
+        ///    let css = try? String(contentsOf: cssURL, encoding: .utf8) {
+        ///    customCss = css
+        /// }
+        /// let _editorView = SQTextEditorView(customCss: customCss)
+
+        let _editorView = SQTextEditorView()
         _editorView.translatesAutoresizingMaskIntoConstraints = false
         return _editorView
 }()
@@ -78,19 +81,28 @@ You can check events by implement SQTextEditorDelegate:
 editorView.delegate = self
 ```
 
-Delagate has this functions:
+Delegate has these functions:
 
 ```swift
 //Called when the editor components is ready.
-@objc optional func editorDidLoad(_ editor: SQTextEditorView)
+optional func editorDidLoad(_ editor: SQTextEditorView)
     
 //Called when the user selected some text or moved the cursor to a different position.
-@objc optional func editor(_ editor: SQTextEditorView,
+optional func editor(_ editor: SQTextEditorView,
                                selectedTextAttributeDidChange attribute: SQTextAttribute)
     
 //Called when the user inserted, deleted or changed the style of some text.
-@objc optional func editor(_ editor: SQTextEditorView,
+optional func editor(_ editor: SQTextEditorView,
                                contentHeightDidChange height: Int)
+
+//Called when the user tapped the editor
+optional func editorDidFocus(_ editor: SQTextEditorView)
+
+//Called when the user tapped the done button of keyboard tool bar
+optional func editorDidTapDoneButton(_ editor: SQTextEditorView)
+
+//Called when the editor cursor moved
+func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition)
 ```
 
 ## Editor Functions
@@ -141,21 +153,21 @@ func underline(completion: ((_ error: Error?) -> ())? = nil)
 ```
 
 ### strikethrough
-By wrapping it in an 'del' tag.
+By wrapping it in a 'del' tag.
 
 ```swift
 func strikethrough(completion: ((_ error: Error?) -> ())? = nil)
 ```
 
 ### setTextColor
-Sets the colour of the selected text.
+Sets the color of the selected text.
 
 ```swift
 func setText(color: UIColor, completion: ((_ error: Error?) -> ())? = nil)
 ```
 
 ### setTextBackgroundColor
-Sets the colour of the background of the selected text.
+Sets the color of the background of the selected text.
 
 ```swift
 func setText(backgroundColor: UIColor, completion: ((_ error: Error?) -> ())? = nil)
@@ -190,11 +202,18 @@ func removeLink(completion: ((_ error: Error?) -> ())? = nil)
 ```
 
 ### clear
-Clear Editor's content. Method removes all Blocks and inserts new initial empty Block
+Clear Editor's content. The method removes all Blocks and inserts new initial empty Block
      `<div><br></div>`. A block to invoke when script evaluation completes or fails.
 
 ```swift
 func clear(completion: ((_ error: Error?) -> ())? = nil)
+```
+
+### focus
+The editor gained focus or lost focus.
+
+```swift
+func focus(_ isFocused: Bool, completion: ((_ error: Error?) -> ())? = nil)
 ```
 
 ## Contributions
