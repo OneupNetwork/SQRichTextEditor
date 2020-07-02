@@ -52,8 +52,8 @@ The `SQTextEditorView` is a plain UIView subclass, so you are free to use it whe
 import SQRichTextEditor
 
 private lazy var editorView: SQTextEditorView = {
-		/// You can pass the custom css string, if you want to change the default editor style
-		/// var customCss: String?
+	/// You can pass the custom css string, if you want to change the default editor style
+	/// var customCss: String?
         /// if let cssURL = Bundle.main.url(forResource: isDarkMode ? "editor_dark" : "editor_light", withExtension: "css"),
         ///    let css = try? String(contentsOf: cssURL, encoding: .utf8) {
         ///    customCss = css
