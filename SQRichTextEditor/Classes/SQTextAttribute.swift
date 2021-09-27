@@ -5,7 +5,7 @@
 //  Created by  Jesse on 2019/12/12.
 //
 
-import Foundation
+import UIKit
 
 public class SQTextAttribute: NSObject {
     public var format = SQTextAttributeFormat()
