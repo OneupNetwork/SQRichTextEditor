@@ -5,7 +5,9 @@
 //  Created by  Jesse on 2019/12/12.
 //
 
+#if os(iOS)
 import Foundation
+import UIKit
 
 public class SQTextAttribute: NSObject {
     public var format = SQTextAttributeFormat()
@@ -81,3 +83,5 @@ public struct SQEditorCursorPosition: Codable {
     public var x: Double = 0
     public var y: Double = 0
 }
+
+#endif

@@ -5,11 +5,11 @@
 //  Created by  Jesse on 2019/12/10.
 //
 
+#if os(iOS)
 import UIKit
 import WebKit
 
 public protocol SQTextEditorDelegate: class {
-    
     /// Called when the editor components is ready.
     func editorDidLoad(_ editor: SQTextEditorView)
     
@@ -37,7 +37,6 @@ public extension SQTextEditorDelegate {
 }
 
 public class SQTextEditorView: UIView {
-    
     public weak var delegate: SQTextEditorDelegate?
     
     public lazy var selectedTextAttribute = SQTextAttribute()
@@ -119,10 +118,10 @@ public class SQTextEditorView: UIView {
     }
     
     private enum JSMessageName: String, CaseIterable {
-        case fontInfo = "fontInfo"
-        case format = "format"
-        case isFocused = "isFocused"
-        case cursorPosition = "cursorPosition"
+        case fontInfo
+        case format
+        case isFocused
+        case cursorPosition
     }
     
     private enum RichTextFormatType {
@@ -158,10 +157,10 @@ public class SQTextEditorView: UIView {
             config.userContentController.add(self, name: $0.rawValue)
         }
         
-        //inject css to html
+        // inject css to html
         if customCss == nil,
-            let cssURL = Bundle(for: SQTextEditorView.self).url(forResource: "editor", withExtension: "css"),
-            let css = try? String(contentsOf: cssURL, encoding: .utf8) {
+           let cssURL = Bundle(for: SQTextEditorView.self).url(forResource: "editor", withExtension: "css"),
+           let css = try? String(contentsOf: cssURL, encoding: .utf8) {
             customCss = css
         }
         
@@ -212,6 +211,7 @@ public class SQTextEditorView: UIView {
         setupEditor()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -226,7 +226,7 @@ public class SQTextEditorView: UIView {
         }
     }
     
-    //MARK: - Private Methods
+    // MARK: - Private Methods
     
     private func encodeStringTo64(fromString: String) -> String {
         let plainData = fromString.data(using: .utf8)
@@ -234,12 +234,12 @@ public class SQTextEditorView: UIView {
     }
     
     private func setupUI() {
-        self.addSubview(webView)
+        addSubview(webView)
         
-        webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        webView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        webView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
     
     private func setupEditor() {
@@ -247,9 +247,9 @@ public class SQTextEditorView: UIView {
             .path(forResource: "index", ofType: "html") {
             let url = URL(fileURLWithPath: path)
             
-            let request = URLRequest.init(url: url,
-                                          cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                                          timeoutInterval: 5.0)
+            let request = URLRequest(url: url,
+                                     cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+                                     timeoutInterval: 5.0)
             webView.load(request)
         }
     }
@@ -257,17 +257,17 @@ public class SQTextEditorView: UIView {
     private func setFormat(_ type: RichTextFormatType,
                            completion: ((_ error: Error?) -> ())?) {
         webView.evaluateJavaScript(JSFunctionType.setFormat(type: type).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     private func removeFormat(_ type: RichTextFormatType,
                               completion: ((_ error: Error?) -> ())?) {
         webView.evaluateJavaScript(JSFunctionType.removeFormat(type: type).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     private func observerContentHeight() {
@@ -288,15 +288,15 @@ public class SQTextEditorView: UIView {
     
     private func getEditorHeight() {
         webView.evaluateJavaScript(JSFunctionType.getEditorHeight.name,
-                                   completionHandler: { [weak self] (height, error) in
-                                    guard let self = `self` else { return }
-                                    if let height = height as? Int, error == nil {
-                                        self.lastContentHeight = height
-                                    }
-        })
+                                   completionHandler: { [weak self] height, error in
+                                       guard let self = `self` else { return }
+                                       if let height = height as? Int, error == nil {
+                                           self.lastContentHeight = height
+                                       }
+                                   })
     }
     
-    //MARK: - Public Methods
+    // MARK: - Public Methods
     
     /**
      Returns the HTML value of the editor in its current state.
@@ -304,7 +304,7 @@ public class SQTextEditorView: UIView {
      - Parameter html: HTML String.
      */
     public func getHTML(completion: @escaping (_ html: String?) -> ()) {
-        webView.evaluateJavaScript(JSFunctionType.getHTML.name, completionHandler: { (value, error) in
+        webView.evaluateJavaScript(JSFunctionType.getHTML.name, completionHandler: { value, _ in
             completion(value as? String)
         })
     }
@@ -317,7 +317,7 @@ public class SQTextEditorView: UIView {
      */
     public func insertHTML(_ html: String,
                            completion: ((_ error: Error?) -> ())? = nil) {
-        webView.evaluateJavaScript(JSFunctionType.insertHTML(html: html).name, completionHandler: { (_, error) in
+        webView.evaluateJavaScript(JSFunctionType.insertHTML(html: html).name, completionHandler: { _, error in
             completion?(error)
         })
     }
@@ -358,10 +358,9 @@ public class SQTextEditorView: UIView {
                                                                startIndex: startIndex,
                                                                endElementId: endElementId,
                                                                endIndex: endIndex).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
-        
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -371,9 +370,9 @@ public class SQTextEditorView: UIView {
      */
     public func getSelectedText(completion: @escaping (_ text: String?) -> ()) {
         webView.evaluateJavaScript(JSFunctionType.getSelectedText.name,
-                                   completionHandler: { (value, error) in
-                                    completion(value as? String)
-        })
+                                   completionHandler: { value, _ in
+                                       completion(value as? String)
+                                   })
     }
     
     /**
@@ -425,9 +424,9 @@ public class SQTextEditorView: UIView {
         let hex = Helper.rgbColorToHex(color: color)
         
         webView.evaluateJavaScript(JSFunctionType.setTextColor(hex: hex).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -439,9 +438,9 @@ public class SQTextEditorView: UIView {
         let hex = Helper.rgbColorToHex(color: backgroundColor)
         
         webView.evaluateJavaScript(JSFunctionType.setTextBackgroundColor(hex: hex).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -451,9 +450,9 @@ public class SQTextEditorView: UIView {
      */
     public func setText(size: Int, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.setTextSize(size: size).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -463,9 +462,9 @@ public class SQTextEditorView: UIView {
      */
     public func insertImage(url: String, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.insertImage(url: url).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -475,9 +474,9 @@ public class SQTextEditorView: UIView {
      */
     public func makeLink(url: String, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.makeLink(url: url).name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -485,9 +484,9 @@ public class SQTextEditorView: UIView {
      */
     public func removeLink(completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.removeLink.name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -496,9 +495,9 @@ public class SQTextEditorView: UIView {
      */
     public func clear(completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.clear.name,
-                                   completionHandler: { (_, error) in
-                                    completion?(error)
-        })
+                                   completionHandler: { _, error in
+                                       completion?(error)
+                                   })
     }
     
     /**
@@ -506,17 +505,16 @@ public class SQTextEditorView: UIView {
      */
     public func focus(_ isFocused: Bool, completion: ((_ error: Error?) -> ())? = nil) {
         webView.evaluateJavaScript(JSFunctionType.focusEditor(isFocused: isFocused).name,
-                                   completionHandler: { [weak self] (_, error) in
-                                    if !isFocused {
-                                        self?.webView.endEditing(true)
-                                    }
-                                    completion?(error)
-        })
+                                   completionHandler: { [weak self] _, error in
+                                       if !isFocused {
+                                           self?.webView.endEditing(true)
+                                       }
+                                       completion?(error)
+                                   })
     }
 }
 
 extension SQTextEditorView: WKNavigationDelegate {
-
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         observerContentHeight()
         delegate?.editorDidLoad(self)
@@ -524,11 +522,9 @@ extension SQTextEditorView: WKNavigationDelegate {
 }
 
 extension SQTextEditorView: WKScriptMessageHandler {
-    
     public func userContentController(_ userContentController: WKUserContentController,
                                       didReceive message: WKScriptMessage) {
         if let name = JSMessageName(rawValue: message.name) {
-            
             let body: Any = message.body
             
             editorEventQueue.addOperation { [weak self] in
@@ -537,8 +533,8 @@ extension SQTextEditorView: WKScriptMessageHandler {
                 switch name {
                 case .format:
                     if let dict = body as? [String: Bool],
-                        let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                        let format = try? JSONDecoder().decode(SQTextAttributeFormat.self, from: data) {
+                       let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                       let format = try? JSONDecoder().decode(SQTextAttributeFormat.self, from: data) {
                         DispatchQueue.main.async {
                             self.selectedTextAttribute.format = format
                             self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
@@ -547,8 +543,8 @@ extension SQTextEditorView: WKScriptMessageHandler {
                     
                 case .fontInfo:
                     if let dict = body as? [String: Any],
-                        let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                        let fontInfo = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
+                       let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                       let fontInfo = try? JSONDecoder().decode(SQTextAttributeTextInfo.self, from: data) {
                         DispatchQueue.main.async {
                             self.selectedTextAttribute.textInfo = fontInfo
                             self.delegate?.editor(self, selectedTextAttributeDidChange: self.selectedTextAttribute)
@@ -564,8 +560,8 @@ extension SQTextEditorView: WKScriptMessageHandler {
                     
                 case .cursorPosition:
                     if let dict = body as? [String: Any],
-                        let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-                        let position = try? JSONDecoder().decode(SQEditorCursorPosition.self, from: data) {
+                       let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                       let position = try? JSONDecoder().decode(SQEditorCursorPosition.self, from: data) {
                         DispatchQueue.main.async {
                             self.delegate?.editor(self, cursorPositionDidChange: position)
                         }
@@ -576,3 +572,4 @@ extension SQTextEditorView: WKScriptMessageHandler {
     }
 }
 
+#endif

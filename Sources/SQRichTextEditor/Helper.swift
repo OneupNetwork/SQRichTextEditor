@@ -5,7 +5,9 @@
 //  Created by  Jesse on 2019/12/16.
 //
 
+#if os(iOS)
 import Foundation
+import UIKit
 
 struct Helper {
     static func hexToRGBColor(hex string: String) -> UIColor {
@@ -17,9 +19,9 @@ struct Helper {
         }
         
         return UIColor(
-            red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
+            red: CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
             green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF) / 255.0,
-            blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
+            blue: CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
     }
     
     static func rgbColorToHex(color: UIColor) -> String {
@@ -30,3 +32,5 @@ struct Helper {
         return String(format: "#%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
     }
 }
+
+#endif

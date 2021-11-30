@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/ambroisedecouttere/SQRichTextEditor/Example/build/Debug-iphoneos/SQRichTextEditor/SQRichTextEditor.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/ambroisedecouttere/SQRichTextEditor/Example/build/Pods.build/Debug-iphoneos/SQRichTextEditor.build/unextended-module.modulemap",
+    }]
+  }]
+}

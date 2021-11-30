@@ -19,9 +19,9 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
 
-  s.ios.source_files = 'SQRichTextEditor/Classes/*'
+  s.ios.source_files = 'Sources/SQRichTextEditor/*'
   
-  s.ios.resources = "SQRichTextEditor/Assets/Editor/*"
+  s.ios.resources = "Sources/SQRichTextEditor/Editor/*"
   
   #s.ios.resource_bundles = { 'imageResource' => ['SQRichTextEditor/Assets/*.xcassets'] }
 

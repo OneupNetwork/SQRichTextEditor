@@ -1,0 +1,6 @@
+framework module Pods_SQRichTextEditor_Example {
+  umbrella header "Pods-SQRichTextEditor_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

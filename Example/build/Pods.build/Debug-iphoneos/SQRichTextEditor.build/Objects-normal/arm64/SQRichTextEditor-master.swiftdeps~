@@ -1,0 +1,10 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
+build_start_time: [1638266770, 600543975]
+build_end_time: [1638266779, 229807853]
+inputs:
+  "/Users/ambroisedecouttere/SQRichTextEditor/SQRichTextEditor/Classes/Helper.swift": [1638266684, 942939281]
+  "/Users/ambroisedecouttere/SQRichTextEditor/SQRichTextEditor/Classes/KeyboardRequiresUserInteraction.swift": [1638266684, 943104982]
+  "/Users/ambroisedecouttere/SQRichTextEditor/SQRichTextEditor/Classes/RepeatingTimer.swift": [1638266684, 943259716]
+  "/Users/ambroisedecouttere/SQRichTextEditor/SQRichTextEditor/Classes/SQTextAttribute.swift": [1638266684, 943427085]
+  "/Users/ambroisedecouttere/SQRichTextEditor/SQRichTextEditor/Classes/SQTextEditorView.swift": [1638266684, 943671703]
