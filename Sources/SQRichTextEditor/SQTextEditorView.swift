@@ -36,7 +36,7 @@ public extension SQTextEditorDelegate {
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {}
 }
 
-public class SQTextEditorView: UIView {
+open class SQTextEditorView: UIView {
     public weak var delegate: SQTextEditorDelegate?
     
     public lazy var selectedTextAttribute = SQTextAttribute()
@@ -212,7 +212,7 @@ public class SQTextEditorView: UIView {
     }
     
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
