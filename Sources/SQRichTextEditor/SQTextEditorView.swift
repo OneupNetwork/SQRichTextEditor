@@ -117,7 +117,7 @@ open class SQTextEditorView: UIView {
         }
     }
     
-    private enum JSMessageName: String, CaseIterable {
+    public enum JSMessageName: String, CaseIterable {
         case fontInfo
         case format
         case isFocused
