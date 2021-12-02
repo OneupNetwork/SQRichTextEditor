@@ -226,12 +226,12 @@ open class SQTextEditorView: UIView {
         }
     }
     
-    // MARK: - Private Methods
-    
-    private func encodeStringTo64(fromString: String) -> String {
+    public func encodeStringTo64(fromString: String) -> String {
         let plainData = fromString.data(using: .utf8)
         return plainData?.base64EncodedString(options: []) ?? ""
     }
+    
+    // MARK: - Private Methods
     
     private func setupUI() {
         addSubview(webView)
