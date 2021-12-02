@@ -202,7 +202,7 @@ open class SQTextEditorView: UIView {
     
     private var timer: RepeatingTimer?
     
-    private var customCss: String?
+    public var customCss: String?
     
     public init(customCss: String? = nil) {
         self.customCss = customCss
