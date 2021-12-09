@@ -36,7 +36,7 @@ public extension SQTextEditorDelegate {
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {}
 }
 
-public class SQTextEditorView: UIView {
+open class SQTextEditorView: UIView {
     public weak var delegate: SQTextEditorDelegate?
     
     public lazy var selectedTextAttribute = SQTextAttribute()
