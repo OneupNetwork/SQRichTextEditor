@@ -144,7 +144,7 @@ open class SQTextEditorView: UIView {
         }
     }
     
-    public lazy var webView: WKWebView = {
+    open lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
         config.preferences = WKPreferences()
         config.preferences.minimumFontSize = 10
