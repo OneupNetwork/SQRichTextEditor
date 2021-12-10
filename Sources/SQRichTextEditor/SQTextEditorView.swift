@@ -159,7 +159,7 @@ public class SQTextEditorView: UIView {
         
         // inject css to html
         if customCss == nil,
-           let cssURL = Bundle(for: SQTextEditorView.self).url(forResource: "editor", withExtension: "css"),
+           let cssURL = Bundle.module.url(forResource: "editor", withExtension: "css"),
            let css = try? String(contentsOf: cssURL, encoding: .utf8) {
             customCss = css
         }
@@ -243,8 +243,7 @@ public class SQTextEditorView: UIView {
     }
     
     private func setupEditor() {
-        if let path = Bundle(for: SQTextEditorView.self)
-            .path(forResource: "index", ofType: "html") {
+        if let path = Bundle.module.path(forResource: "index", ofType: "html") {
             let url = URL(fileURLWithPath: path)
             
             let request = URLRequest(url: url,
