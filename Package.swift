@@ -25,7 +25,7 @@ let package = Package(
         .target(
             name: "SQRichTextEditor",
             resources: [
-                .copy("Resources")
+                .copy("Editor")
             ]
         )
     ],

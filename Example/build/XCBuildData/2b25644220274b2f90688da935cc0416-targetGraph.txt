@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+SQRichTextEditor in Pods, no dependencies
+Pods-SQRichTextEditor_Example in Pods, depends on:
+SQRichTextEditor in Pods (explicit)
+Pods-SQRichTextEditor_Tests in Pods, depends on:
+Pods-SQRichTextEditor_Example in Pods (explicit)

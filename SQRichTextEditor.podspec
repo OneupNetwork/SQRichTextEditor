@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.ios.source_files = 'Sources/SQRichTextEditor/*'
   
-  s.ios.resources = "Sources/SQRichTextEditor/Resources/*"
+  s.ios.resources = "Sources/SQRichTextEditor/Editor/*"
   
   #s.ios.resource_bundles = { 'imageResource' => ['SQRichTextEditor/Assets/*.xcassets'] }
 
