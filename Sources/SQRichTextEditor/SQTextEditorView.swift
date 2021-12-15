@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-public protocol SQTextEditorDelegate: class {
+public protocol SQTextEditorDelegate: AnyObject {
     /// Called when the editor components is ready.
     func editorDidLoad(_ editor: SQTextEditorView)
     
