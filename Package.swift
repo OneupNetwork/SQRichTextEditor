@@ -25,7 +25,10 @@ let package = Package(
         .target(
             name: "SQRichTextEditor",
             resources: [
-                .copy("Editor")
+                .copy("Editor/index.html"),
+                .copy("Editor/editor.css"),
+                .copy("Editor/editor.js"),
+                .copy("Editor/squire-raw.js")
             ]
         )
     ],
