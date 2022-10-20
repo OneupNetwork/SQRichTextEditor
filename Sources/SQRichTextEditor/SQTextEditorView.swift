@@ -24,6 +24,8 @@ public protocol SQTextEditorDelegate: AnyObject {
     func editorDidTapDoneButton(_ editor: SQTextEditorView)
     
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition)
+    
+    func editorContentChanged(_ editor: SQTextEditorView, content: String)
 }
 
 /// Make optional protocol methods
@@ -34,6 +36,7 @@ public extension SQTextEditorDelegate {
     func editorDidFocus(_ editor: SQTextEditorView) {}
     func editorDidTapDoneButton(_ editor: SQTextEditorView) {}
     func editor(_ editor: SQTextEditorView, cursorPositionDidChange position: SQEditorCursorPosition) {}
+    func editorContentChanged(_ editor: SQTextEditorView, content: String) {}
 }
 
 open class SQTextEditorView: UIView {
@@ -122,6 +125,7 @@ open class SQTextEditorView: UIView {
         case format
         case isFocused
         case cursorPosition
+        case contentChanged
     }
     
     private enum RichTextFormatType {
@@ -212,7 +216,7 @@ open class SQTextEditorView: UIView {
     }
     
     @available(*, unavailable)
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -563,6 +567,13 @@ extension SQTextEditorView: WKScriptMessageHandler {
                        let position = try? JSONDecoder().decode(SQEditorCursorPosition.self, from: data) {
                         DispatchQueue.main.async {
                             self.delegate?.editor(self, cursorPositionDidChange: position)
+                        }
+                    }
+                    
+                case .contentChanged:
+                    DispatchQueue.main.async {
+                        if let value = body as? String {
+                            self.delegate?.editorContentChanged(self, content: value)
                         }
                     }
                 }
