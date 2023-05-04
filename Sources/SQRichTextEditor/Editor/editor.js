@@ -190,14 +190,8 @@ document.getElementById("outer-container").onclick = function(t) {
     postFocusStatus(isFocused = !1)
 }), !1), editor.addEventListener("input", (function() {
     detectFontInfoChnaged(), detectFormatChnaged()
-}), !1), editor.addEventListener("keyup", (function() {
     postContentChanged(editor.getHTML())
-}), !1), editor.addEventListener("paste", (event) => {
-    event.preventDefault();
-    let paste = (event.clipboardData || window.clipboardData).getData("text");
-    editor.insertHTML(paste);
-    postContentChanged(editor.getHTML());
-}, !1), editor.addEventListener("select", (function() {
+}), !1), editor.addEventListener("select", (function() {
     detectFontInfoChnaged(), detectFormatChnaged()
 }), !1), editor.addEventListener("cursor", (function() {
     detectFontInfoChnaged(), detectFormatChnaged(), detectCursorPosition()
