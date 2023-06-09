@@ -76,7 +76,7 @@ open class SQTextEditorView: UIView {
                 let safetyHTML = html
                     .replacingOccurrences(of: "\n", with: "\\n")
                     .replacingOccurrences(of: "\r", with: "\\r")
-                return "insertHTML('\(safetyHTML)')"
+                return "insertHTML(`\(safetyHTML)`)"
                 
             case .setSelection(let sId, let s, let eId, let e):
                 return "setTextSelection('\(sId)','\(s)','\(eId)','\(e)')"
