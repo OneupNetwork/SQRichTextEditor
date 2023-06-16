@@ -525,8 +525,8 @@ extension SQTextEditorView: WKNavigationDelegate {
 }
 
 extension SQTextEditorView: WKScriptMessageHandler {
-    public func userContentController(_ userContentController: WKUserContentController,
-                                      didReceive message: WKScriptMessage) {
+    open func userContentController(_ userContentController: WKUserContentController,
+                                    didReceive message: WKScriptMessage) {
         if let name = JSMessageName(rawValue: message.name) {
             let body: Any = message.body
             
