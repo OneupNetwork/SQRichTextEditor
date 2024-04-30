@@ -489,7 +489,7 @@ function fixCursor ( node, root ) {
 
 // Recursively examine container nodes and wrap any inline children.
 function fixContainer ( container, root ) {
-    var children = container.childNodes;
+    /*var children = container.childNodes;
     var doc = container.ownerDocument;
     var wrapper = null;
     var i, l, child, isBR;
@@ -527,7 +527,7 @@ function fixContainer ( container, root ) {
     }
     if ( wrapper ) {
         container.appendChild( fixCursor( wrapper, root ) );
-    }
+    }*/
     return container;
 }
 
