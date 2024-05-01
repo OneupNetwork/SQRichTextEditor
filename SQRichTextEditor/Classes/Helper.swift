@@ -5,7 +5,7 @@
 //  Created by  Jesse on 2019/12/16.
 //
 
-import Foundation
+import UIKit
 
 struct Helper {
     static func hexToRGBColor(hex string: String) -> UIColor {
